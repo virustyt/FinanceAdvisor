@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -158,7 +158,6 @@
 				B9DA11C99FBC926322C2D959 /* Pods-FinanceAdvisorTests.debug.xcconfig */,
 				762346913C38369E4F510F62 /* Pods-FinanceAdvisorTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -184,6 +183,7 @@
 				84B975A62776063D00158382 /* Frameworks */,
 				84B975A72776063D00158382 /* Resources */,
 				6909E8E90905D1C1772F267E /* [CP] Embed Pods Frameworks */,
+				84E9D88C2779C15600747D88 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -358,6 +358,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinanceAdvisor/Pods-FinanceAdvisor-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		84E9D88C2779C15600747D88 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 		CD065FA2730119605B3C6A90 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

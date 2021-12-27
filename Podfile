@@ -7,7 +7,7 @@ target 'FinanceAdvisor' do
   use_frameworks!
 
   pod 'SwiftLint'
-  pod 'Localize-Swift', '~> 3.2' #, :git => 'https://github.com/CocoaPods/Specs.git'
+  pod 'Localize-Swift', '~> 3.2'
   pod 'R.swift'
 
   target 'FinanceAdvisorTests' do
