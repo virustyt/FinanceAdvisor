@@ -31,7 +31,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
     
     private lazy var lastChangeTitleLabel: UILabel = {
         let label = UILabel.titleTwoBoldLabel
-        label.text = "Last change".localized()
+        label.text = "last-change".localized()
         return label
     }()
     

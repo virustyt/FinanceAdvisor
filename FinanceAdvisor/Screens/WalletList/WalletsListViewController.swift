@@ -16,7 +16,7 @@ class WalletsListViewController: UIViewController {
     
     private lazy var emptyCollectionViewLabel: UILabel = {
         let label = UILabel.titleOneLabel
-        label.text = "No wallets created 😥"
+        label.text = "no-wallets".localized()
         label.isHidden = true
         return label
     }()

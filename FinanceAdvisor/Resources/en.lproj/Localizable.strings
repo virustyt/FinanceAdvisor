@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  FinanceAdvisor
+
+  Created by Vladimir Oleinikov on 28.12.2021.
+  
+*/
+
+"no-wallets" = "No wallets created 😥";
+"wallets" = "Wallets";
+"last-change" = "Last change";
