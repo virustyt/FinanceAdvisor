@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,16 @@
 		84B975B92776063E00158382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B975B82776063E00158382 /* Assets.xcassets */; };
 		84B975C72776063F00158382 /* FinanceAdvisorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B975C62776063F00158382 /* FinanceAdvisorTests.swift */; };
 		84B975D22776063F00158382 /* FinanceAdvisorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B975D12776063F00158382 /* FinanceAdvisorUITests.swift */; };
+		84E9D8912779C5ED00747D88 /* WalletsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8902779C5ED00747D88 /* WalletsListViewController.swift */; };
+		84E9D8952779CA7900747D88 /* WalletCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8942779CA7900747D88 /* WalletCollectionViewCell.swift */; };
+		84E9D8972779CA8B00747D88 /* AddWalletButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8962779CA8B00747D88 /* AddWalletButton.swift */; };
+		84E9D89A2779D28E00747D88 /* UILabel+TitleOneLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8992779D28E00747D88 /* UILabel+TitleOneLabel.swift */; };
+		84E9D89F2779D56900747D88 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84E9D89E2779D56900747D88 /* Montserrat-Regular.ttf */; };
+		84E9D8A32779DB0900747D88 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8A22779DB0900747D88 /* R.generated.swift */; };
+		84E9D8A52779E7AA00747D88 /* UIColor+RickBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8A42779E7AA00747D88 /* UIColor+RickBlack.swift */; };
+		84E9D8AA2779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8A92779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift */; };
+		84E9D8AC2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8AB2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift */; };
+		84E9D8AF277A1C6800747D88 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84E9D8AE277A1C6800747D88 /* Montserrat-SemiBold.ttf */; };
 		CC7C97E5EFC685CAC4FB2E21 /* Pods_FinanceAdvisor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2814473266DD18D8D54BAE50 /* Pods_FinanceAdvisor.framework */; };
 		F3FD151ED5E68526AD64C480 /* Pods_FinanceAdvisor_FinanceAdvisorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EACCB49F0DDF20FB1B5491 /* Pods_FinanceAdvisor_FinanceAdvisorUITests.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +59,16 @@
 		84B975CD2776063F00158382 /* FinanceAdvisorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinanceAdvisorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B975D12776063F00158382 /* FinanceAdvisorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceAdvisorUITests.swift; sourceTree = "<group>"; };
 		84B975D32776063F00158382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84E9D8902779C5ED00747D88 /* WalletsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListViewController.swift; sourceTree = "<group>"; };
+		84E9D8942779CA7900747D88 /* WalletCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCollectionViewCell.swift; sourceTree = "<group>"; };
+		84E9D8962779CA8B00747D88 /* AddWalletButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWalletButton.swift; sourceTree = "<group>"; };
+		84E9D8992779D28E00747D88 /* UILabel+TitleOneLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+TitleOneLabel.swift"; sourceTree = "<group>"; };
+		84E9D89E2779D56900747D88 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		84E9D8A22779DB0900747D88 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		84E9D8A42779E7AA00747D88 /* UIColor+RickBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RickBlack.swift"; sourceTree = "<group>"; };
+		84E9D8A92779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletsListVC+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
+		84E9D8AB2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletsListVC+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
+		84E9D8AE277A1C6800747D88 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		95DFE53CBA933F53093198C6 /* Pods-FinanceAdvisor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAdvisor.release.xcconfig"; path = "Target Support Files/Pods-FinanceAdvisor/Pods-FinanceAdvisor.release.xcconfig"; sourceTree = "<group>"; };
 		9C99F7C3C41B5E24FFEE98E9 /* Pods_FinanceAdvisorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceAdvisorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3DD6E84AA26B99D7C9457B5 /* Pods-FinanceAdvisor-FinanceAdvisorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAdvisor-FinanceAdvisorUITests.debug.xcconfig"; path = "Target Support Files/Pods-FinanceAdvisor-FinanceAdvisorUITests/Pods-FinanceAdvisor-FinanceAdvisorUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,27 +105,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		847B7E8C277649AF009043CA /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		847B7E8D277649B9009043CA /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		847B7E8E277649C4009043CA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		847B7E8F277649D2009043CA /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,10 +141,12 @@
 		84B975AB2776063D00158382 /* FinanceAdvisor */ = {
 			isa = PBXGroup;
 			children = (
+				84E9D89B2779D4BB00747D88 /* Resources */,
+				84E9D8982779D1FC00747D88 /* Extensions */,
+				84E9D88E2779C58E00747D88 /* Managers */,
+				84E9D88D2779C58500747D88 /* Models */,
+				84E9D88F2779C59C00747D88 /* Screens */,
 				847B7E8F277649D2009043CA /* Support */,
-				847B7E8C277649AF009043CA /* Managers */,
-				847B7E8E277649C4009043CA /* Models */,
-				847B7E8D277649B9009043CA /* Screens */,
 			);
 			path = FinanceAdvisor;
 			sourceTree = "<group>";
@@ -166,6 +167,91 @@
 				84B975D32776063F00158382 /* Info.plist */,
 			);
 			path = FinanceAdvisorUITests;
+			sourceTree = "<group>";
+		};
+		84E9D88D2779C58500747D88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		84E9D88E2779C58E00747D88 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		84E9D88F2779C59C00747D88 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				84E9D8922779CA4000747D88 /* WalletList */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		84E9D8922779CA4000747D88 /* WalletList */ = {
+			isa = PBXGroup;
+			children = (
+				84E9D8AD2779F78100747D88 /* Extensions */,
+				84E9D8932779CA5000747D88 /* Views */,
+				84E9D8902779C5ED00747D88 /* WalletsListViewController.swift */,
+			);
+			path = WalletList;
+			sourceTree = "<group>";
+		};
+		84E9D8932779CA5000747D88 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84E9D8942779CA7900747D88 /* WalletCollectionViewCell.swift */,
+				84E9D8962779CA8B00747D88 /* AddWalletButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84E9D8982779D1FC00747D88 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84E9D8992779D28E00747D88 /* UILabel+TitleOneLabel.swift */,
+				84E9D8A42779E7AA00747D88 /* UIColor+RickBlack.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		84E9D89B2779D4BB00747D88 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84E9D8A12779DAF400747D88 /* R.Swift */,
+				84E9D8A02779DAE100747D88 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		84E9D8A02779DAE100747D88 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				84E9D8AE277A1C6800747D88 /* Montserrat-SemiBold.ttf */,
+				84E9D89E2779D56900747D88 /* Montserrat-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		84E9D8A12779DAF400747D88 /* R.Swift */ = {
+			isa = PBXGroup;
+			children = (
+				84E9D8A22779DB0900747D88 /* R.generated.swift */,
+			);
+			path = R.Swift;
+			sourceTree = "<group>";
+		};
+		84E9D8AD2779F78100747D88 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84E9D8A92779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift */,
+				84E9D8AB2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		902EAF0E235A5F370612EF0D /* Pods */ = {
@@ -199,11 +285,11 @@
 			buildConfigurationList = 84B975D62776063F00158382 /* Build configuration list for PBXNativeTarget "FinanceAdvisor" */;
 			buildPhases = (
 				262B0B9AD518C15ADBE4518A /* [CP] Check Pods Manifest.lock */,
+				84E9D88C2779C15600747D88 /* ShellScript */,
 				84B975A52776063D00158382 /* Sources */,
 				84B975A62776063D00158382 /* Frameworks */,
 				84B975A72776063D00158382 /* Resources */,
 				6909E8E90905D1C1772F267E /* [CP] Embed Pods Frameworks */,
-				84E9D88C2779C15600747D88 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -300,6 +386,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E9D89F2779D56900747D88 /* Montserrat-Regular.ttf in Resources */,
+				84E9D8AF277A1C6800747D88 /* Montserrat-SemiBold.ttf in Resources */,
 				84B975B92776063E00158382 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +467,7 @@
 		};
 		84E9D88C2779C15600747D88 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -389,10 +478,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		CD065FA2730119605B3C6A90 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -445,7 +535,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E9D8A52779E7AA00747D88 /* UIColor+RickBlack.swift in Sources */,
 				84B975AD2776063D00158382 /* AppDelegate.swift in Sources */,
+				84E9D8A32779DB0900747D88 /* R.generated.swift in Sources */,
+				84E9D8AA2779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift in Sources */,
+				84E9D89A2779D28E00747D88 /* UILabel+TitleOneLabel.swift in Sources */,
+				84E9D8952779CA7900747D88 /* WalletCollectionViewCell.swift in Sources */,
+				84E9D8972779CA8B00747D88 /* AddWalletButton.swift in Sources */,
+				84E9D8AC2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift in Sources */,
+				84E9D8912779C5ED00747D88 /* WalletsListViewController.swift in Sources */,
 				84B975B72776063D00158382 /* FinanceAdvisor.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
