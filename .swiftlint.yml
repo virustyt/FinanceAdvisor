@@ -1,0 +1,9 @@
+excluded:
+  - Carthage
+  - Pods
+  - Source/ExcludedFolder
+  - Source/ExcludedFile.swift
+  - FinanceAdvisor/Resources/R.Swift
+  - R.generated.swift
+
+line_length: 140
