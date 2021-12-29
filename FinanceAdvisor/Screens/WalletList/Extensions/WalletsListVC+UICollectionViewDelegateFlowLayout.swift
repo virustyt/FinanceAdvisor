@@ -11,7 +11,7 @@ extension WalletsListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: WalletsListViewController.Constants.cellWidth,
+        CGSize(width: WalletsListViewController.Constants.cellWidth,
                       height: WalletsListViewController.Constants.cellHeight)
     }
 }
