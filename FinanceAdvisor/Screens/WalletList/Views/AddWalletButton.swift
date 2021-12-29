@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Localize_Swift
+
+fileprivate extension Consts {
+    static let titleLabelLeadingConstant: CGFloat = 30
+    static let plusImageViewTrailingConstant: CGFloat = -30
+}
 
 class AddWalletButton: UIView {
-
-    private struct Consts {
-        static let titleLabelLeadingConstant: CGFloat = 30
-        static let plusImageViewTrailingConstant: CGFloat = -30
-    }
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel.titleOneLabel
