@@ -9,7 +9,7 @@ import UIKit
 
 extension UILabel {
 
-    static var titleTwoRegularLabel: UILabel{
+    static var titleTwoRegularLabel: UILabel {
         let label = UILabel()
         label.font = R.font.montserratRegular(size: 18)
         label.textColor = UIColor.rickBlack

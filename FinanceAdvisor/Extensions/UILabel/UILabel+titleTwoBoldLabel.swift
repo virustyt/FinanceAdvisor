@@ -8,8 +8,8 @@
 import UIKit
 
 extension UILabel {
-    
-    static var titleTwoBoldLabel: UILabel{
+
+    static var titleTwoBoldLabel: UILabel {
         let label = UILabel()
         label.font = R.font.montserratSemiBold(size: 18)
         label.textColor = .black

@@ -9,7 +9,7 @@ import UIKit
 
 extension UILabel {
 
-    static var titleOneLabel: UILabel{
+    static var titleOneLabel: UILabel {
         let label = UILabel()
         label.font = R.font.montserratSemiBold(size: 24)
         label.textColor = .black

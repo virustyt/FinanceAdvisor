@@ -6,6 +6,6 @@
   
 */
 
-"no-wallets" = "钱包尚未创建";
+"no wallets created" = "钱包尚未创建😥";
 "wallets" = "钱包";
-"last-change" = "最后更改";
+"Last change" = "最后更改";

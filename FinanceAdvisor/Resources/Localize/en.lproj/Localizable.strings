@@ -6,6 +6,6 @@
   
 */
 
-"no-wallets" = "No wallets created 😥";
+"no wallets created" = "No wallets created 😥";
 "wallets" = "Wallets";
-"last-change" = "Last change";
+"Last change" = "Last change";

@@ -7,15 +7,17 @@
 
 import UIKit
 
-extension WalletsListViewController: UICollectionViewDataSource{
+extension WalletsListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         1
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WalletCollectionViewCell.reuseIdentifyer, for: indexPath) as? WalletCollectionViewCell
-        else {fatalError()}
-        
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WalletCollectionViewCell.identifyer,
+                                                            for: indexPath) as? WalletCollectionViewCell
+        else {return UICollectionViewCell()}
+
         return cell
     }
 }
