@@ -18,8 +18,9 @@ fileprivate extension Consts {
 
     static let themeColorViewTopInset: CGFloat = UIScreen.main.bounds.height / 29.86
     static let themeColorViewLeadingInset: CGFloat = UIScreen.main.bounds.width / 13.8
-    static let themeColorViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 51.75
+    static let themeColorViewTrailingInset: CGFloat = UIScreen.main.bounds.width * 0.02
     static let themeColorViewBottomInset: CGFloat = UIScreen.main.bounds.height / 29.86
+    static let themeColorViewWidth: CGFloat = UIScreen.main.bounds.height / 1.58
 
     static let rightArrowImageViewTopInset: CGFloat = UIScreen.main.bounds.height / 12.48
     static let rightArrowImageViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 17.2
@@ -48,6 +49,7 @@ class ColorThemeView: UIView {
     private lazy var themeColorView: UIImageView = {
         let imageView = UIImageView(image: R.image.backGradientFive())
         imageView.contentMode = .scaleToFill
+        imageView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return imageView
     }()
 
@@ -70,10 +72,10 @@ class ColorThemeView: UIView {
     init(tapClouser: (() -> Void)? = nil) {
         containerViewTapClouser = tapClouser
         super.init(frame: .zero)
-        setUpConstraints()
         setUpEntierViewGradient()
         setUpContainerViewGradient()
         setUpShadows()
+        setUpConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -98,17 +100,21 @@ class ColorThemeView: UIView {
 
             containerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Consts.containerViewTopInset),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Consts.containerViewLeadingInset),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Consts.containerViewTrailingInset),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Consts.containerViewTrailingInset),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.containerViewBottomInset),
 
-            themeColorView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Consts.themeColorViewTopInset),
-            themeColorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Consts.themeColorViewLeadingInset),
-            themeColorView.trailingAnchor.constraint(equalTo: rightArrowImageView.leadingAnchor, constant: Consts.themeColorViewTrailingInset),
-            themeColorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.themeColorViewBottomInset),
+            themeColorView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Consts.themeColorViewTopInset),
+            themeColorView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Consts.themeColorViewLeadingInset),
+            themeColorView.trailingAnchor.constraint(equalTo: rightArrowImageView.leadingAnchor,
+                                                     constant: -Consts.themeColorViewTrailingInset),
+            themeColorView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Consts.themeColorViewBottomInset),
 
-            rightArrowImageView.topAnchor.constraint(equalTo: topAnchor, constant: Consts.rightArrowImageViewTopInset),
-            rightArrowImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Consts.rightArrowImageViewTrailingInset),
-            rightArrowImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.rightArrowImageViewBottomInset)
+            themeColorView.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width * 0.61),
+            themeColorView.heightAnchor.constraint(equalTo: themeColorView.widthAnchor, multiplier: 0.39),
+
+            rightArrowImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor,
+                                                          constant: -Consts.rightArrowImageViewTrailingInset),
+            rightArrowImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
     }
 
@@ -164,7 +170,6 @@ class ColorThemeView: UIView {
         containerView.layer.shadowColor = UIColor.white.withAlphaComponent(0.05).cgColor
     }
 
-
     @objc private func containerViewTapped() {
         containerViewTapClouser?()
     }
@@ -178,7 +183,7 @@ class ColorThemeView: UIView {
             entierViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
 
             containerViewBackgroundGradientLayer.frame = bounds
-            
+
             containerViewBorderLineGradient.frame = bounds
             containerViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
         }

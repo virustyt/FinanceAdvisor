@@ -11,7 +11,7 @@ import Localize_Swift
 fileprivate extension Consts {
     static let collectionViewLeadingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.05))
     static let collectionViewTrailingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.05))
-    static let addWalletButtonTopInset: CGFloat = UIScreen.main.bounds.width / 15
+    static let addWalletButtonTopInset: CGFloat = UIScreen.main.bounds.height / 29.86
     static let collectionViewTopInset: CGFloat = UIScreen.main.bounds.width / 21
 
     static let cellMinWidth: CGFloat = 208
@@ -24,7 +24,7 @@ fileprivate extension Consts {
     static let addButtonHeight: CGFloat = UIScreen.main.bounds.width * 0.18
 }
 
-class WalletsListViewController: UIViewController {
+class WalletsListViewController: BaseViewController {
 
     private lazy var emptyCollectionViewLabel: UILabel = {
         let label = UILabel.titleOneLabel
@@ -33,11 +33,9 @@ class WalletsListViewController: UIViewController {
         return label
     }()
 
-
-    private lazy var addWalletButton: UIView = {
-        let button = ScreenTitleView(title: LocalizeKeys.wallets.localized(), leftButtonImage: R.image.add())
-        return button
-    }()
+    private lazy var addWalletButton = ScreenTitleView(title: LocalizeKeys.wallets.localized(),
+                                     leftButtonImage: R.image.add(),
+                                     leftButtonTapClouser: addButtonTapped)
 
     private let backgroundGradientView = UIImageView(image: R.image.backGradientTwo())
 
@@ -98,8 +96,11 @@ class WalletsListViewController: UIViewController {
         ])
     }
 
-    @objc private func rightButtonTapped() {
-
+    @objc private func addButtonTapped() {
+        let popUpSortController = WalletCreationEditingViewController()
+        popUpSortController.modalPresentationStyle = .overFullScreen
+        popUpSortController.modalTransitionStyle = .coverVertical
+        present(popUpSortController, animated: true, completion: nil)
     }
 }
 

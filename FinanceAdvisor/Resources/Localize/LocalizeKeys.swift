@@ -14,4 +14,5 @@ struct LocalizeKeys {
     static let addNewWallet = "Add new wallet"
     static let editWallet = "Edit wallet"
     static let colorTheme = "Color theme"
+    static let startHere = "Start here..."
 }

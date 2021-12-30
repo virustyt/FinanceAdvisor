@@ -16,14 +16,14 @@ fileprivate extension Consts {
     static let containerViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 20.7 // 20
     static let containerViewBottomInset: CGFloat = UIScreen.main.bounds.height / 44.8 // 20
 
-    static let themeColorViewTopInset: CGFloat = UIScreen.main.bounds.height / 29.86
-    static let themeColorViewLeadingInset: CGFloat = UIScreen.main.bounds.width / 13.8
-    static let themeColorViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 51.75
-    static let themeColorViewBottomInset: CGFloat = UIScreen.main.bounds.height / 29.86
+    static let walletCurrencyLabelTopInset: CGFloat = UIScreen.main.bounds.height / 33.18
+    static let walletCurrencyLabelLeadingInset: CGFloat = UIScreen.main.bounds.width / 20.7 // 20
+    static let walletCurrencyLabelTrailingInset: CGFloat = UIScreen.main.bounds.width / 20.7 // 20
+    static let walletCurrencyLabelBottomInset: CGFloat = UIScreen.main.bounds.height / 33.18
 
-    static let rightArrowImageViewTopInset: CGFloat = UIScreen.main.bounds.height / 12.48
+    static let rightArrowImageViewTopInset: CGFloat = UIScreen.main.bounds.height / 30.89
     static let rightArrowImageViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 17.2
-    static let rightArrowImageViewBottomInset: CGFloat = UIScreen.main.bounds.height / 12.48
+    static let rightArrowImageViewBottomInset: CGFloat = UIScreen.main.bounds.height / 30.89
 
     static let entierViewBorderLineWidth: CGFloat = 1.5
     static let containerViewBorderLineWidth: CGFloat = 1.5
@@ -68,11 +68,11 @@ class CurrencyView: UIView {
     init(tapClouser: (() -> Void)? = nil) {
         containerViewTapClouser = tapClouser
         super.init(frame: .zero)
-        setUpConstraints()
+        setUpShadows()
         setUpGestures()
         setUpEntierViewGradient()
         setUpContainerViewGradient()
-        setUpShadows()
+        setUpConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -97,17 +97,20 @@ class CurrencyView: UIView {
 
             containerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Consts.containerViewTopInset),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Consts.containerViewLeadingInset),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Consts.containerViewTrailingInset),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Consts.containerViewTrailingInset),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.containerViewBottomInset),
 
-            walletCurrencyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Consts.themeColorViewTopInset),
-            walletCurrencyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Consts.themeColorViewLeadingInset),
-            walletCurrencyLabel.trailingAnchor.constraint(equalTo: rightArrowImageView.leadingAnchor, constant: Consts.themeColorViewTrailingInset),
-            walletCurrencyLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.themeColorViewBottomInset),
+            walletCurrencyLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Consts.walletCurrencyLabelTopInset),
+            walletCurrencyLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor,
+                                                         constant: Consts.walletCurrencyLabelLeadingInset),
+            walletCurrencyLabel.trailingAnchor.constraint(equalTo: rightArrowImageView.leadingAnchor,
+                                                          constant: -Consts.walletCurrencyLabelTrailingInset),
+            walletCurrencyLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor,
+                                                        constant: -Consts.walletCurrencyLabelBottomInset),
 
-            rightArrowImageView.topAnchor.constraint(equalTo: topAnchor, constant: Consts.rightArrowImageViewTopInset),
-            rightArrowImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Consts.rightArrowImageViewTrailingInset),
-            rightArrowImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.rightArrowImageViewBottomInset)
+            rightArrowImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor,
+                                                          constant: -Consts.rightArrowImageViewTrailingInset),
+            rightArrowImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
     }
 

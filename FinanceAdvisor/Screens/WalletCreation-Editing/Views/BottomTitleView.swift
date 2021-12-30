@@ -41,6 +41,7 @@ class BottomTitleView: UIView {
         textField.backgroundColor = .clear
         textField.font = R.font.montserratSemiBold(size: 24)
         textField.textColor = .black.withAlphaComponent(0.3)
+        textField.text = LocalizeKeys.startHere.localized()
         return textField
     }()
 
@@ -63,10 +64,10 @@ class BottomTitleView: UIView {
     init(tapClouser: (() -> Void)? = nil) {
         containerViewTapClouser = tapClouser
         super.init(frame: .zero)
-        setUpConstraints()
         setUpEntierViewGradient()
         setUpContainerViewGradient()
         setUpShadows()
+        setUpConstraints()
     }
 
     required init?(coder: NSCoder) {
@@ -89,12 +90,12 @@ class BottomTitleView: UIView {
 
             containerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Consts.containerViewTopInset),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Consts.containerViewLeadingInset),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Consts.containerViewTrailingInset),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Consts.containerViewTrailingInset),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.containerViewBottomInset),
 
-            textFieldForTitle.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Consts.themeColorViewTopInset),
-            textFieldForTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Consts.themeColorViewLeadingInset),
-            textFieldForTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.themeColorViewBottomInset),
+            textFieldForTitle.topAnchor.constraint(equalTo: containerView.topAnchor, constant: Consts.themeColorViewTopInset),
+            textFieldForTitle.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Consts.themeColorViewLeadingInset),
+            textFieldForTitle.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -Consts.themeColorViewBottomInset)
         ])
     }
 
@@ -169,4 +170,3 @@ class BottomTitleView: UIView {
         }
     }
 }
-
