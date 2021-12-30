@@ -25,7 +25,7 @@ fileprivate extension Consts {
     static let rightArrowImageViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 17.2
     static let rightArrowImageViewBottomInset: CGFloat = UIScreen.main.bounds.height / 12.48
 
-    static let borderLineWidth: CGFloat = 1.5
+    static let borderLineWidth: CGFloat = 3
     static let cornerRadius: CGFloat = 20
 }
 
@@ -44,23 +44,35 @@ class ColorThemeView: UIView {
         return view
     }()
 
-    private lazy var themeColorView: UIView = {
-        let view = UIView()
-        return view
+    private lazy var themeColorView: UIImageView = {
+        let imageView = UIImageView(image: R.image.backGradientFive())
+        imageView.contentMode = .scaleToFill
+        return imageView
     }()
 
-    private let backgroundGradientLayer = CAGradientLayer()
-    private let borderLineGradient = CAGradientLayer()
-    private let borderLineMaskLayer = CAShapeLayer()
+    private let entierViewBackgroundGradientLayer = CAGradientLayer()
+    private let entierViewBorderLineGradient = CAGradientLayer()
+    private let entierViewBorderLineMaskLayer = CAShapeLayer()
+
+    private let containerViewBackgroundGradientLayer = CAGradientLayer()
+    private let containerViewBorderLineGradient = CAGradientLayer()
+    private let containerViewBorderLineMaskLayer = CAShapeLayer()
 
     private let containerViewTapClouser: (() -> Void)?
+
+    // MARK: - public funcs
+    func setColorThemeImage(themeImage: UIImage) {
+        themeColorView.image = themeImage
+    }
 
     // MARK: - inits
     init(tapClouser: (() -> Void)? = nil) {
         containerViewTapClouser = tapClouser
         super.init(frame: .zero)
         setUpConstraints()
-        setUpGradient()
+        setUpEntierViewGradient()
+        setUpContainerViewGradient()
+        setUpShadows()
     }
 
     required init?(coder: NSCoder) {
@@ -99,35 +111,73 @@ class ColorThemeView: UIView {
         ])
     }
 
-    private func setUpGradient() {
-        backgroundGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        backgroundGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        backgroundGradientLayer.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.55).cgColor,
+    private func setUpEntierViewGradient() {
+        entierViewBackgroundGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        entierViewBackgroundGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        entierViewBackgroundGradientLayer.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.55).cgColor,
                                 UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.15).cgColor]
 
-        borderLineGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        borderLineGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        borderLineGradient.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.4).cgColor,
+        entierViewBorderLineGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        entierViewBorderLineGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        entierViewBorderLineGradient.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.4).cgColor,
                                 UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.15).cgColor]
-        borderLineMaskLayer.lineWidth = Consts.borderLineWidth
-        borderLineMaskLayer.fillColor = nil
-        borderLineMaskLayer.strokeColor = UIColor.black.cgColor
-        borderLineGradient.mask = borderLineMaskLayer
+        entierViewBorderLineMaskLayer.lineWidth = Consts.borderLineWidth
+        entierViewBorderLineMaskLayer.fillColor = nil
+        entierViewBorderLineMaskLayer.strokeColor = UIColor.black.cgColor
+        entierViewBorderLineGradient.mask = entierViewBorderLineMaskLayer
 
-        layer.addSublayer(borderLineGradient)
-        layer.addSublayer(backgroundGradientLayer)
+        layer.addSublayer(entierViewBorderLineGradient)
+        layer.addSublayer(entierViewBackgroundGradientLayer)
+    }
+
+    private func setUpContainerViewGradient() {
+        containerViewBackgroundGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        containerViewBackgroundGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        containerViewBackgroundGradientLayer.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.55).cgColor,
+                                                       UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.15).cgColor]
+
+        containerViewBorderLineGradient.startPoint = CGPoint(x: 0, y: 0.5)
+        containerViewBorderLineGradient.endPoint = CGPoint(x: 1, y: 0.5)
+        containerViewBorderLineGradient.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.4).cgColor,
+                                                  UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.15).cgColor]
+        containerViewBorderLineMaskLayer.lineWidth = Consts.borderLineWidth
+        containerViewBorderLineMaskLayer.fillColor = nil
+        containerViewBorderLineMaskLayer.strokeColor = UIColor.black.cgColor
+        containerViewBorderLineGradient.mask = containerViewBorderLineMaskLayer
+
+        containerView.layer.addSublayer(containerViewBorderLineGradient)
+        containerView.layer.addSublayer(containerViewBackgroundGradientLayer)
+    }
+
+    private func setUpShadows() {
+        layer.cornerRadius = Consts.cornerRadius
+        layer.masksToBounds = true
+        layer.shadowOffset = CGSize(width: 10.23, height: 10.23)
+        layer.shadowRadius = 204.5
+        layer.shadowColor = UIColor.white.withAlphaComponent(0.05).cgColor
+
+        containerView.layer.cornerRadius = Consts.cornerRadius
+        containerView.layer.masksToBounds = true
+        containerView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        containerView.layer.shadowRadius = 100
+        containerView.layer.shadowColor = UIColor.white.withAlphaComponent(0.05).cgColor
+    }
+
+
+    @objc private func containerViewTapped() {
+        containerViewTapClouser?()
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        if backgroundGradientLayer.frame != bounds {
-            backgroundGradientLayer.frame = bounds
-            borderLineGradient.frame = bounds
-            borderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
-        }
-    }
+        if entierViewBackgroundGradientLayer.frame != bounds {
+            entierViewBackgroundGradientLayer.frame = bounds
+            entierViewBorderLineGradient.frame = bounds
+            entierViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
 
-    @objc private func containerViewTapped() {
-        containerViewTapClouser?()
+            containerViewBackgroundGradientLayer.frame = bounds
+            containerViewBorderLineGradient.frame = bounds
+            containerViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
+        }
     }
 }
