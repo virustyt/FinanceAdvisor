@@ -25,7 +25,8 @@ fileprivate extension Consts {
     static let rightArrowImageViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 17.2
     static let rightArrowImageViewBottomInset: CGFloat = UIScreen.main.bounds.height / 12.48
 
-    static let borderLineWidth: CGFloat = 3
+    static let entierViewBorderLineWidth: CGFloat = 3
+    static let containerViewBorderLineWidth: CGFloat = 1.5
     static let cornerRadius: CGFloat = 20
 }
 
@@ -121,7 +122,7 @@ class ColorThemeView: UIView {
         entierViewBorderLineGradient.endPoint = CGPoint(x: 1, y: 0.5)
         entierViewBorderLineGradient.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.4).cgColor,
                                 UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.15).cgColor]
-        entierViewBorderLineMaskLayer.lineWidth = Consts.borderLineWidth
+        entierViewBorderLineMaskLayer.lineWidth = Consts.entierViewBorderLineWidth
         entierViewBorderLineMaskLayer.fillColor = nil
         entierViewBorderLineMaskLayer.strokeColor = UIColor.black.cgColor
         entierViewBorderLineGradient.mask = entierViewBorderLineMaskLayer
@@ -140,7 +141,7 @@ class ColorThemeView: UIView {
         containerViewBorderLineGradient.endPoint = CGPoint(x: 1, y: 0.5)
         containerViewBorderLineGradient.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.4).cgColor,
                                                   UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.15).cgColor]
-        containerViewBorderLineMaskLayer.lineWidth = Consts.borderLineWidth
+        containerViewBorderLineMaskLayer.lineWidth = Consts.containerViewBorderLineWidth
         containerViewBorderLineMaskLayer.fillColor = nil
         containerViewBorderLineMaskLayer.strokeColor = UIColor.black.cgColor
         containerViewBorderLineGradient.mask = containerViewBorderLineMaskLayer
@@ -172,10 +173,12 @@ class ColorThemeView: UIView {
         super.layoutSubviews()
         if entierViewBackgroundGradientLayer.frame != bounds {
             entierViewBackgroundGradientLayer.frame = bounds
+
             entierViewBorderLineGradient.frame = bounds
             entierViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
 
             containerViewBackgroundGradientLayer.frame = bounds
+            
             containerViewBorderLineGradient.frame = bounds
             containerViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
         }
