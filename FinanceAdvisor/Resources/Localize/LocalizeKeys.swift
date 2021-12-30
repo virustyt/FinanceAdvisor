@@ -11,4 +11,6 @@ struct LocalizeKeys {
     static let wallets = "wallets"
     static let noWallets = "no wallets created"
     static let lastChange = "Last change"
+    static let addNewWallet = "Add new wallet"
+    static let editWallet = "Edit wallet"
 }
