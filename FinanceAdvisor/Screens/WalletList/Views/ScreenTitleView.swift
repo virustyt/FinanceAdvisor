@@ -8,7 +8,7 @@
 import UIKit
 import Localize_Swift
 
-extension Consts {
+fileprivate extension Consts {
     static let backImageViewTopInset: CGFloat = UIScreen.main.bounds.height / 49.77
     static let backImageViewLeadingInset: CGFloat = UIScreen.main.bounds.width / 13.8
     static let backImageViewBottomInset: CGFloat = UIScreen.main.bounds.height / 49.77
@@ -162,14 +162,10 @@ class ScreenTitleView: UIView {
     }
 
     @objc private func rightButtonTapped() {
-        if rightButtonTappedClouser != nil {
-            rightButtonTappedClouser!()
-        }
+        rightButtonTappedClouser?()
     }
 
     @objc private func leftButtonTapped() {
-        if leftButtonTappedClouser != nil {
-            leftButtonTappedClouser!()
-        }
+        leftButtonTappedClouser?()
     }
 }
