@@ -1,5 +1,5 @@
 //
-//  CurrencyView.swift
+//  TitleView.swift
 //  FinanceAdvisor
 //
 //  Created by Vladimir Oleinikov on 29.12.2021.
@@ -16,21 +16,17 @@ fileprivate extension Consts {
     static let containerViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 20.7 // 20
     static let containerViewBottomInset: CGFloat = UIScreen.main.bounds.height / 44.8 // 20
 
-    static let themeColorViewTopInset: CGFloat = UIScreen.main.bounds.height / 29.86
-    static let themeColorViewLeadingInset: CGFloat = UIScreen.main.bounds.width / 13.8
-    static let themeColorViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 51.75
-    static let themeColorViewBottomInset: CGFloat = UIScreen.main.bounds.height / 29.86
-
-    static let rightArrowImageViewTopInset: CGFloat = UIScreen.main.bounds.height / 12.48
-    static let rightArrowImageViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 17.2
-    static let rightArrowImageViewBottomInset: CGFloat = UIScreen.main.bounds.height / 12.48
+    static let themeColorViewTopInset: CGFloat = UIScreen.main.bounds.height / 34.46
+    static let themeColorViewLeadingInset: CGFloat = UIScreen.main.bounds.width / 20.7 // 20
+    static let themeColorViewTrailingInset: CGFloat = UIScreen.main.bounds.width / 20.7 // 20
+    static let themeColorViewBottomInset: CGFloat = UIScreen.main.bounds.height / 34.46
 
     static let entierViewBorderLineWidth: CGFloat = 1.5
-    static let containerViewBorderLineWidth: CGFloat = 1.5
+    static let containerViewBorderLineWidth: CGFloat = 1
     static let cornerRadius: CGFloat = 20
 }
 
-class CurrencyView: UIView {
+class BottomTitleView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel.titleOneLabel
@@ -38,15 +34,14 @@ class CurrencyView: UIView {
         return label
     }()
 
-    private let rightArrowImageView = UIImageView(image: R.image.arrowRight())
-
     private lazy var containerView = UIView()
 
-    private lazy var walletCurrencyLabel: UILabel = {
-        let label = UILabel.titleOneLabel
-        label.text = "USD $"
-        label.textAlignment = .left
-        return label
+    private lazy var textFieldForTitle: UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = .clear
+        textField.font = R.font.montserratSemiBold(size: 24)
+        textField.textColor = .black.withAlphaComponent(0.3)
+        return textField
     }()
 
     private let entierViewBackgroundGradientLayer = CAGradientLayer()
@@ -60,8 +55,8 @@ class CurrencyView: UIView {
     private let containerViewTapClouser: (() -> Void)?
 
     // MARK: - public funcs
-    func setCurrency(code: String) {
-        walletCurrencyLabel.text = code
+    func setWalletTitle(title: String) {
+        textFieldForTitle.text = title
     }
 
     // MARK: - inits
@@ -69,7 +64,6 @@ class CurrencyView: UIView {
         containerViewTapClouser = tapClouser
         super.init(frame: .zero)
         setUpConstraints()
-        setUpGestures()
         setUpEntierViewGradient()
         setUpContainerViewGradient()
         setUpShadows()
@@ -83,13 +77,11 @@ class CurrencyView: UIView {
     private func setUpConstraints() {
         addSubview(titleLabel)
         addSubview(containerView)
-        containerView.addSubview(walletCurrencyLabel)
-        containerView.addSubview(rightArrowImageView)
+        containerView.addSubview(textFieldForTitle)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        walletCurrencyLabel.translatesAutoresizingMaskIntoConstraints = false
-        rightArrowImageView.translatesAutoresizingMaskIntoConstraints = false
+        textFieldForTitle.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Consts.titleLabelTopInset),
@@ -100,14 +92,9 @@ class CurrencyView: UIView {
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Consts.containerViewTrailingInset),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.containerViewBottomInset),
 
-            walletCurrencyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Consts.themeColorViewTopInset),
-            walletCurrencyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Consts.themeColorViewLeadingInset),
-            walletCurrencyLabel.trailingAnchor.constraint(equalTo: rightArrowImageView.leadingAnchor, constant: Consts.themeColorViewTrailingInset),
-            walletCurrencyLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.themeColorViewBottomInset),
-
-            rightArrowImageView.topAnchor.constraint(equalTo: topAnchor, constant: Consts.rightArrowImageViewTopInset),
-            rightArrowImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Consts.rightArrowImageViewTrailingInset),
-            rightArrowImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.rightArrowImageViewBottomInset)
+            textFieldForTitle.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Consts.themeColorViewTopInset),
+            textFieldForTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Consts.themeColorViewLeadingInset),
+            textFieldForTitle.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Consts.themeColorViewBottomInset),
         ])
     }
 
@@ -163,11 +150,6 @@ class CurrencyView: UIView {
         containerView.layer.shadowColor = UIColor.white.withAlphaComponent(0.05).cgColor
     }
 
-    private func setUpGestures() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(containerViewTapped))
-        containerView.addGestureRecognizer(tapGesture)
-    }
-
     @objc private func containerViewTapped() {
         containerViewTapClouser?()
     }
@@ -187,3 +169,4 @@ class CurrencyView: UIView {
         }
     }
 }
+
