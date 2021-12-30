@@ -34,7 +34,11 @@ class BottomTitleView: UIView {
         return label
     }()
 
-    private lazy var containerView = UIView()
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
 
     private lazy var textFieldForTitle: UITextField = {
         let textField = UITextField()
@@ -50,7 +54,7 @@ class BottomTitleView: UIView {
     private let entierViewBorderLineMaskLayer = CAShapeLayer()
 
     private let containerViewBackgroundGradientLayer = CAGradientLayer()
-    private let containerViewBorderLineGradient = CAGradientLayer()
+    private let containerViewBorderLineColorLayer = CAShapeLayer()
     private let containerViewBorderLineMaskLayer = CAShapeLayer()
 
     private let containerViewTapClouser: (() -> Void)?
@@ -64,8 +68,8 @@ class BottomTitleView: UIView {
     init(tapClouser: (() -> Void)? = nil) {
         containerViewTapClouser = tapClouser
         super.init(frame: .zero)
+        setUpLayers()
         setUpEntierViewGradient()
-        setUpContainerViewGradient()
         setUpShadows()
         setUpConstraints()
     }
@@ -118,23 +122,10 @@ class BottomTitleView: UIView {
         layer.addSublayer(entierViewBackgroundGradientLayer)
     }
 
-    private func setUpContainerViewGradient() {
-        containerViewBackgroundGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        containerViewBackgroundGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        containerViewBackgroundGradientLayer.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.55).cgColor,
-                                                       UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.15).cgColor]
-
-        containerViewBorderLineGradient.startPoint = CGPoint(x: 0, y: 0.5)
-        containerViewBorderLineGradient.endPoint = CGPoint(x: 1, y: 0.5)
-        containerViewBorderLineGradient.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.4).cgColor,
-                                                  UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.15).cgColor]
-        containerViewBorderLineMaskLayer.lineWidth = Consts.containerViewBorderLineWidth
-        containerViewBorderLineMaskLayer.fillColor = nil
-        containerViewBorderLineMaskLayer.strokeColor = UIColor.black.cgColor
-        containerViewBorderLineGradient.mask = containerViewBorderLineMaskLayer
-
-        containerView.layer.addSublayer(containerViewBorderLineGradient)
-        containerView.layer.addSublayer(containerViewBackgroundGradientLayer)
+    private func setUpLayers() {
+        containerView.layer.cornerRadius = Consts.cornerRadius
+        containerView.layer.borderWidth = Consts.containerViewBorderLineWidth
+        containerView.layer.borderColor = UIColor.black.cgColor
     }
 
     private func setUpShadows() {
@@ -144,11 +135,14 @@ class BottomTitleView: UIView {
         layer.shadowRadius = 100
         layer.shadowColor = UIColor.white.withAlphaComponent(0.05).cgColor
 
-        containerView.layer.cornerRadius = Consts.cornerRadius
         containerView.layer.masksToBounds = true
         containerView.layer.shadowOffset = CGSize(width: 5, height: 5)
         containerView.layer.shadowRadius = 100
         containerView.layer.shadowColor = UIColor.white.withAlphaComponent(0.05).cgColor
+    }
+    private func srtUpLayer() {
+        containerView.layer.borderWidth = 1
+        containerView.layer.borderColor = UIColor.black.cgColor
     }
 
     @objc private func containerViewTapped() {
@@ -163,9 +157,7 @@ class BottomTitleView: UIView {
             entierViewBorderLineGradient.frame = bounds
             entierViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
 
-            containerViewBackgroundGradientLayer.frame = bounds
-
-            containerViewBorderLineGradient.frame = bounds
+            containerViewBorderLineColorLayer.frame = bounds
             containerViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
         }
     }
