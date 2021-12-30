@@ -19,6 +19,9 @@ extension Consts {
     static let deleteWalletButtonTopInset: CGFloat = UIScreen.main.bounds.height / 49.77
     static let deleteWalletButtonTrailingInset: CGFloat = UIScreen.main.bounds.width / 13.8
     static let deleteWalletButtonBottomInset: CGFloat = UIScreen.main.bounds.height / 49.77
+
+    static let borderLineWidth: CGFloat = 1.5
+    static let cornerRadius: CGFloat = 20
 }
 
 class ScreenTitleView: UIView {
@@ -123,7 +126,7 @@ class ScreenTitleView: UIView {
     }
 
     private func setUpShadows() {
-        layer.cornerRadius = 20
+        layer.cornerRadius = Consts.cornerRadius
         layer.masksToBounds = true
         layer.shadowOffset = CGSize(width: 5, height: 5)
         layer.shadowRadius = 100
@@ -140,7 +143,7 @@ class ScreenTitleView: UIView {
         borderLineGradient.endPoint = CGPoint(x: 1, y: 0.5)
         borderLineGradient.colors = [UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.4).cgColor,
                                 UIColor(red: 1, green: 1, blue: 0.984, alpha: 0.15).cgColor]
-        borderLineMaskLayer.lineWidth = 1.5
+        borderLineMaskLayer.lineWidth = Consts.borderLineWidth
         borderLineMaskLayer.fillColor = nil
         borderLineMaskLayer.strokeColor = UIColor.black.cgColor
         borderLineGradient.mask = borderLineMaskLayer
@@ -154,7 +157,7 @@ class ScreenTitleView: UIView {
         if backgroundGradientLayer.frame != bounds {
             backgroundGradientLayer.frame = bounds
             borderLineGradient.frame = bounds
-            borderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: 20).cgPath
+            borderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
         }
     }
 
