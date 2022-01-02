@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		46342C79BD21E1F50EA2B198 /* Pods_FinanceAdvisorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C99F7C3C41B5E24FFEE98E9 /* Pods_FinanceAdvisorTests.framework */; };
+		848998C22781B59300CE7FD4 /* ClolorThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998C12781B59300CE7FD4 /* ClolorThemeListViewController.swift */; };
+		848998C52781BCC100CE7FD4 /* ColorThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998C42781BCC100CE7FD4 /* ColorThemeCollectionViewCell.swift */; };
 		84B975AD2776063D00158382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B975AC2776063D00158382 /* AppDelegate.swift */; };
 		84B975B72776063D00158382 /* FinanceAdvisor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84B975B52776063D00158382 /* FinanceAdvisor.xcdatamodeld */; };
 		84B975B92776063E00158382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B975B82776063E00158382 /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		27EACCB49F0DDF20FB1B5491 /* Pods_FinanceAdvisor_FinanceAdvisorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceAdvisor_FinanceAdvisorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2814473266DD18D8D54BAE50 /* Pods_FinanceAdvisor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceAdvisor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		762346913C38369E4F510F62 /* Pods-FinanceAdvisorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAdvisorTests.release.xcconfig"; path = "Target Support Files/Pods-FinanceAdvisorTests/Pods-FinanceAdvisorTests.release.xcconfig"; sourceTree = "<group>"; };
+		848998C12781B59300CE7FD4 /* ClolorThemeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClolorThemeListViewController.swift; sourceTree = "<group>"; };
+		848998C42781BCC100CE7FD4 /* ColorThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		84B975A92776063D00158382 /* FinanceAdvisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceAdvisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B975AC2776063D00158382 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B975B62776063D00158382 /* FinanceAdvisor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinanceAdvisor.xcdatamodel; sourceTree = "<group>"; };
@@ -124,6 +128,23 @@
 				84B975B52776063D00158382 /* FinanceAdvisor.xcdatamodeld */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		848998C02781B53100CE7FD4 /* ColorThemeList */ = {
+			isa = PBXGroup;
+			children = (
+				848998C32781BC9600CE7FD4 /* views */,
+				848998C12781B59300CE7FD4 /* ClolorThemeListViewController.swift */,
+			);
+			path = ColorThemeList;
+			sourceTree = "<group>";
+		};
+		848998C32781BC9600CE7FD4 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				848998C42781BCC100CE7FD4 /* ColorThemeCollectionViewCell.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		84B975A02776063D00158382 = {
@@ -225,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				84E9D8922779CA4000747D88 /* WalletList */,
+				848998C02781B53100CE7FD4 /* ColorThemeList */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -595,6 +617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E9D8A52779E7AA00747D88 /* UIColor+RickBlack.swift in Sources */,
+				848998C22781B59300CE7FD4 /* ClolorThemeListViewController.swift in Sources */,
 				84B975AD2776063D00158382 /* AppDelegate.swift in Sources */,
 				84E9D8A32779DB0900747D88 /* R.generated.swift in Sources */,
 				84E9D8AA2779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift in Sources */,
@@ -606,6 +629,7 @@
 				84E9D8AC2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				84E9D8912779C5ED00747D88 /* WalletsListViewController.swift in Sources */,
 				84B975B72776063D00158382 /* FinanceAdvisor.xcdatamodeld in Sources */,
+				848998C52781BCC100CE7FD4 /* ColorThemeCollectionViewCell.swift in Sources */,
 				84D6702C277C9A120039F1AC /* Consts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
