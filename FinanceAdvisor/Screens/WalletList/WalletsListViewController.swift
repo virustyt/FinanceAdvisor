@@ -26,6 +26,8 @@ class WalletsListViewController: UIViewController {
         static let addButtonHeight: CGFloat = UIScreen.main.bounds.width * 0.18
     }
 
+    private var wallets: [Wallet] = [Wallet]()
+
     private lazy var emptyCollectionViewLabel: UILabel = {
         let label = UILabel.titleOneLabel
         label.text = LocalizeKeys.noWallets.localized()

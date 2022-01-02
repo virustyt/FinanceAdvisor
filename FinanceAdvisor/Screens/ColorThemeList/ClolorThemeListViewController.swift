@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol changeColorTheme: AnyObject {
+    func changeColorTheme(to image: UIImage)
+}
+
 fileprivate extension Consts {
     static let collectionViewLeadingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.05))
     static let collectionViewTrailingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.05))
@@ -21,6 +25,10 @@ fileprivate extension Consts {
 }
 
 class ClolorThemeListViewController: UIViewController {
+
+    weak var delegate: changeColorTheme?
+
+    var chosenThemeImage: UIImage?
 
     private lazy var backButton = UIView()
 
@@ -47,6 +55,19 @@ class ClolorThemeListViewController: UIViewController {
 
     private var backgroundGradientView = UIImageView(image: R.image.backGradientTwo())
 
+    private lazy var alertController: UIAlertController = {
+        let alertController = UIAlertController(title: LocalizeKeys.saveChanges.localized(),
+                                                message: nil,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: LocalizeKeys.yes.localized(),
+                                                style: .default,
+                                                handler: self.alertControllerYesTapped(action:)))
+        alertController.addAction(UIAlertAction(title: LocalizeKeys.no.localized(),
+                                                style: .default,
+                                                handler: self.alertControllerNoTapped(action:)))
+        return alertController
+    }()
+
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +76,18 @@ class ClolorThemeListViewController: UIViewController {
 
     // MARK: - private funcs
     @objc private func backButtonTapped() {
-        
+        if chosenThemeImage != nil {
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+
+    @objc private func alertControllerYesTapped(action: UIAlertAction) {
+        guard let colorThemeImage = chosenThemeImage else { return }
+        delegate?.changeColorTheme(to: colorThemeImage)
+    }
+
+    @objc private func alertControllerNoTapped(action: UIAlertAction) {
+        // do not change wallet color theme, just exit this VC
     }
 
     private func setUPConstraints() {
@@ -89,11 +121,12 @@ class ClolorThemeListViewController: UIViewController {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ClolorThemeListViewController: UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedColorImage = themeColorImages.filter({ $0 != nil })[indexPath.item]
+        chosenThemeImage = themeColorImages.filter({ $0 != nil })[indexPath.item]
 
         UIView.transition(with: backgroundGradientView, duration: 0.7, options: .transitionCrossDissolve, animations: {
-            self.backgroundGradientView.image = selectedColorImage
+            self.backgroundGradientView.image = self.chosenThemeImage
         }, completion: nil)
     }
 }
