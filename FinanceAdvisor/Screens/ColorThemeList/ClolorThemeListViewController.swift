@@ -66,7 +66,7 @@ class ClolorThemeListViewController: UIViewController {
         backgroundGradientView.translatesAutoresizingMaskIntoConstraints = false
         backButton.translatesAutoresizingMaskIntoConstraints = false
         colorsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             backgroundGradientView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundGradientView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -89,7 +89,13 @@ class ClolorThemeListViewController: UIViewController {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ClolorThemeListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedColorImage = themeColorImages.filter({ $0 != nil })[indexPath.item]
 
+        UIView.transition(with: backgroundGradientView, duration: 0.7, options: .transitionCrossDissolve, animations: {
+            self.backgroundGradientView.image = selectedColorImage
+        }, completion: nil)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
