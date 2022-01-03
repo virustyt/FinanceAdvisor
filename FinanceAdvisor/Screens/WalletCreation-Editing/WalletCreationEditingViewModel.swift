@@ -15,12 +15,22 @@ protocol WalletCreatingEditingWallet {
 }
 
 class WalletCreationEditingViewModel: WalletCreatingEditingWallet {
+
+    private let router: WalletCreationEditingRouterProtocol?
+
     func backButtonTaped() {
+        router?.showWalletList()
     }
 
     func currencyViewTaped() {
+        router?.showChoosingCurrencyVC()
     }
 
     func colorThemeTaped() {
+        router?.showChoosingColorThemeVC()
+    }
+
+    init(router: WalletCreationEditingRouterProtocol) {
+        self.router = router
     }
 }

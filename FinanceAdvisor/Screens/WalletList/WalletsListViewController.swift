@@ -26,7 +26,7 @@ fileprivate extension Consts {
 
 class WalletsListViewController: BaseViewController {
 
-    private var viewModel: WalletListViewModelProtocol = WalletListViewModel()
+    private lazy var viewModel: WalletListViewModelProtocol = WalletListViewModel(router: router)
     private lazy var router: WalletListRouterProtocol = WalletListRouter(viewController: self)
 
     private lazy var emptyCollectionViewLabel: UILabel = {

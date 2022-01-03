@@ -15,7 +15,9 @@ protocol WalletListViewModelProtocol {
 
 class WalletListViewModel: WalletListViewModelProtocol {
 
-    let manager = Manager.shared
+    private let manager = Manager.shared
+
+    private let router: WalletListRouterProtocol?
 
     func walletsCount() -> Int {
         manager.wallets.count
@@ -23,5 +25,9 @@ class WalletListViewModel: WalletListViewModelProtocol {
 
     func getWalletBy(index: Int) -> Wallet{
         manager.wallets[index]
-    }    
+    }
+
+    init(router: WalletListRouterProtocol) {
+        self.router = router
+    }
 }

@@ -8,7 +8,11 @@
 import Foundation
 
 protocol WalletCreationEditingRouterProtocol {
+    func showChoosingColorThemeVC()
 
+    func showChoosingCurrencyVC()
+
+    func showWalletList()
 }
 
 class WalletCreationEditingRouter: BaseRouter, WalletCreationEditingRouterProtocol {
