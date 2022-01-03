@@ -57,16 +57,13 @@ class BottomTitleView: UIView {
     private let containerViewBorderLineColorLayer = CAShapeLayer()
     private let containerViewBorderLineMaskLayer = CAShapeLayer()
 
-    private let containerViewTapClouser: (() -> Void)?
-
     // MARK: - public funcs
     func setWalletTitle(title: String) {
         textFieldForTitle.text = title
     }
 
     // MARK: - inits
-    init(clouser: (() -> Void)? = nil) {
-        containerViewTapClouser = clouser
+    init() {
         super.init(frame: .zero)
         setUpLayers()
         setUpEntierViewGradient()

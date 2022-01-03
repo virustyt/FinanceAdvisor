@@ -26,6 +26,9 @@ fileprivate extension Consts {
 
 class WalletsListViewController: BaseViewController {
 
+    private var viewModel: WalletListViewModelProtocol = WalletListViewModel()
+    private lazy var router: WalletListRouterProtocol = WalletListRouter(viewController: self)
+
     private lazy var emptyCollectionViewLabel: UILabel = {
         let label = UILabel.titleOneLabel
         label.text = LocalizeKeys.noWallets.localized()
@@ -97,10 +100,7 @@ class WalletsListViewController: BaseViewController {
     }
 
     @objc private func addButtonTapped() {
-        let popUpSortController = WalletCreationEditingViewController()
-        popUpSortController.modalPresentationStyle = .overFullScreen
-        popUpSortController.modalTransitionStyle = .coverVertical
-        present(popUpSortController, animated: true, completion: nil)
+        router.showWalletCreationEditingVC()
     }
 }
 
@@ -117,7 +117,7 @@ extension WalletsListViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDataSource
 extension WalletsListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        0
+        viewModel.walletsCount()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

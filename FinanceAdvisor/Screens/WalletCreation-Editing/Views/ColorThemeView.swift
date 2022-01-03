@@ -66,8 +66,8 @@ class ColorThemeView: UIView {
     }
 
     // MARK: - inits
-    init(tapClouser: (() -> Void)? = nil) {
-        containerViewTapClouser = tapClouser
+    init(clouser: (() -> Void)? = nil) {
+        containerViewTapClouser = clouser
         super.init(frame: .zero)
         setUpEntierViewGradient()
         setUpContainerViewGradient()

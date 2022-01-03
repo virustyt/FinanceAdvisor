@@ -11,7 +11,7 @@ class Manager {
 
     static let shared = Manager()
 
-    private var wallets = [Wallet]()
+    private(set) var wallets = [Wallet]()
 
     // MARK: - public funcs
     func addEmptyWallet() {

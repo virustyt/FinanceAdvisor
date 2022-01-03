@@ -31,21 +31,19 @@ fileprivate extension Consts {
 
 class WalletCreationEditingViewController: BaseViewController {
 
-    private let addNewWalletRightButtonTapClouser: (() -> Void)? = nil
-    private let currencyViewTapClouser: (() -> Void)? = nil
-    private let titleViewTapClouser: (() -> Void)? = nil
-    private let colorThemeTapClouser: (() -> Void)? = nil
+    private var viewModel: WalletCreatingEditingWallet = WalletCreationEditingViewModel()
+    private lazy var router: WalletCreationEditingRouterProtocol = WalletCreationEditingRouter(viewController: self)
 
-    private lazy var addNewWalletView = ScreenTitleView(title: LocalizeKeys.addNewWallet.localized(),
+    private lazy var backEditWalletView = ScreenTitleView(title: LocalizeKeys.addNewWallet.localized(),
                                             rightButtonImage: R.image.back(),
-                                            rightButtonTapClouser: addNewWalletRightButtonTapClouser)
+                                            rightButtonTapClouser: viewModel.backButtonTaped)
 
     private lazy var scrollView = UIScrollView()
     private let containerForViews = UIView()
 
-    private lazy var colorThemeView = ColorThemeView(tapClouser: colorThemeTapClouser)
-    private lazy var currencyView = CurrencyView(clouser: currencyViewTapClouser)
-    private lazy var titleView = BottomTitleView(clouser: titleViewTapClouser)
+    private lazy var colorThemeView = ColorThemeView(clouser: viewModel.colorThemeTaped)
+    private lazy var currencyView = CurrencyView(clouser: viewModel.currencyViewTaped)
+    private lazy var titleView = BottomTitleView()
     private let backgroundGradientView = UIImageView(image: R.image.backGradientFive())
 
     // MARK: - life cycle
@@ -57,13 +55,13 @@ class WalletCreationEditingViewController: BaseViewController {
     // MARK: - private funcs
     private func setUpConstraints() {
         view.addSubview(backgroundGradientView)
-        view.addSubview(addNewWalletView)
+        view.addSubview(backEditWalletView)
         view.addSubview(colorThemeView)
         view.addSubview(currencyView)
         view.addSubview(titleView)
 
         backgroundGradientView.translatesAutoresizingMaskIntoConstraints = false
-        addNewWalletView.translatesAutoresizingMaskIntoConstraints = false
+        backEditWalletView.translatesAutoresizingMaskIntoConstraints = false
         currencyView.translatesAutoresizingMaskIntoConstraints = false
         titleView.translatesAutoresizingMaskIntoConstraints = false
         colorThemeView.translatesAutoresizingMaskIntoConstraints = false
@@ -74,14 +72,14 @@ class WalletCreationEditingViewController: BaseViewController {
             backgroundGradientView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundGradientView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            addNewWalletView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+            backEditWalletView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                                   constant: Consts.addNewWalletViewTopInset),
-            addNewWalletView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
+            backEditWalletView.leadingAnchor.constraint(equalTo: view.leadingAnchor,
                                                       constant: Consts.addNewWalletViewLeadingInset),
-            addNewWalletView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
+            backEditWalletView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
                                                        constant: -Consts.addNewWalletViewTrailingInset),
 
-            colorThemeView.topAnchor.constraint(equalTo: addNewWalletView.bottomAnchor, constant: Consts.colorThemeViewTopInset),
+            colorThemeView.topAnchor.constraint(equalTo: backEditWalletView.bottomAnchor, constant: Consts.colorThemeViewTopInset),
             colorThemeView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Consts.colorThemeViewLeadingInset),
             colorThemeView.trailingAnchor.constraint(equalTo: view.trailingAnchor,
                                                      constant: -Consts.colorThemeViewTrailingInset),
