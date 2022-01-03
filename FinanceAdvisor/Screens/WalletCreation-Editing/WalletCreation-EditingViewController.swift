@@ -44,8 +44,8 @@ class WalletCreationEditingViewController: BaseViewController {
     private let containerForViews = UIView()
 
     private lazy var colorThemeView = ColorThemeView(tapClouser: colorThemeTapClouser)
-    private lazy var currencyView = CurrencyView(tapClouser: currencyViewTapClouser)
-    private lazy var titleView = BottomTitleView(tapClouser: titleViewTapClouser)
+    private lazy var currencyView = CurrencyView(clouser: currencyViewTapClouser)
+    private lazy var titleView = BottomTitleView(clouser: titleViewTapClouser)
     private let backgroundGradientView = UIImageView(image: R.image.backGradientFive())
 
     // MARK: - life cycle

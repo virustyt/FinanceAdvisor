@@ -65,8 +65,8 @@ class BottomTitleView: UIView {
     }
 
     // MARK: - inits
-    init(tapClouser: (() -> Void)? = nil) {
-        containerViewTapClouser = tapClouser
+    init(clouser: (() -> Void)? = nil) {
+        containerViewTapClouser = clouser
         super.init(frame: .zero)
         setUpLayers()
         setUpEntierViewGradient()
@@ -140,14 +140,6 @@ class BottomTitleView: UIView {
         containerView.layer.shadowRadius = 100
         containerView.layer.shadowColor = UIColor.white.withAlphaComponent(0.05).cgColor
     }
-    private func srtUpLayer() {
-        containerView.layer.borderWidth = 1
-        containerView.layer.borderColor = UIColor.black.cgColor
-    }
-
-    @objc private func containerViewTapped() {
-        containerViewTapClouser?()
-    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -155,10 +147,10 @@ class BottomTitleView: UIView {
             entierViewBackgroundGradientLayer.frame = bounds
 
             entierViewBorderLineGradient.frame = bounds
-            entierViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
+            entierViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: Consts.cornerRadius).cgPath
 
             containerViewBorderLineColorLayer.frame = bounds
-            containerViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
+            containerViewBorderLineMaskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: Consts.cornerRadius).cgPath
         }
     }
 }

@@ -41,10 +41,7 @@ class ColorThemeView: UIView {
 
     private let rightArrowImageView = UIImageView(image: R.image.arrowRight())
 
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        return view
-    }()
+    private let containerView = UIView()
 
     private lazy var themeColorView: UIImageView = {
         let imageView = UIImageView(image: R.image.backGradientFive())
@@ -64,7 +61,7 @@ class ColorThemeView: UIView {
     private let containerViewTapClouser: (() -> Void)?
 
     // MARK: - public funcs
-    func setColorThemeImage(themeImage: UIImage) {
+    func setColorThemeImage(to themeImage: UIImage) {
         themeColorView.image = themeImage
     }
 

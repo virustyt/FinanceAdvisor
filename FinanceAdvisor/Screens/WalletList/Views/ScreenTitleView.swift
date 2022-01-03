@@ -37,7 +37,7 @@ class ScreenTitleView: UIView {
     private lazy var rightButton: UIButton = {
         let button = UIButton()
         button.setImage(rightButtonImage, for: .normal)
-        button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(ScreenTitleView.rightButtonTapped), for: .touchUpInside)
         button.isHidden = rightButtonImage == nil ? true : false
         return button
     }()
@@ -45,7 +45,7 @@ class ScreenTitleView: UIView {
     private lazy var leftButton: UIButton = {
         let button = UIButton()
         button.setImage(leftButtonImage, for: .normal)
-        button.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(ScreenTitleView.leftButtonTapped), for: .touchUpInside)
         button.isHidden = leftButtonImage == nil ? true : false
         return button
     }()

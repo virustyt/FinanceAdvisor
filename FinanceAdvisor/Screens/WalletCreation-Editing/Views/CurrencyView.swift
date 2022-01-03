@@ -60,13 +60,13 @@ class CurrencyView: UIView {
     private let containerViewTapClouser: (() -> Void)?
 
     // MARK: - public funcs
-    func setCurrency(code: String) {
+    func setCurrencyCode(to code: String) {
         walletCurrencyLabel.text = code
     }
 
     // MARK: - inits
-    init(tapClouser: (() -> Void)? = nil) {
-        containerViewTapClouser = tapClouser
+    init(clouser: (() -> Void)? = nil) {
+        containerViewTapClouser = clouser
         super.init(frame: .zero)
         setUpShadows()
         setUpGestures()
