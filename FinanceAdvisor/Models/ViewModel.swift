@@ -28,7 +28,7 @@ protocol WalletEditingProtocol {
 
 class ViewModel: WalletEditingProtocol {
 
-    var manager = Manager()
+    var manager = Manager.shared
 
     // MARK: - public funcs
     func addEmptyWallet() {

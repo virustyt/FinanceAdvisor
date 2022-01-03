@@ -13,7 +13,7 @@ struct Transaction {
     var direction: Direction = .income
     var date: String = "no date"
 
-    private enum Direction {
+    enum Direction {
         case income, outcome
     }
 }
