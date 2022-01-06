@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol changeColorTheme: AnyObject {
-    func changeColorTheme(to image: UIImage)
-}
-
 fileprivate extension Consts {
     static let collectionViewLeadingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.05))
     static let collectionViewTrailingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.05))
@@ -24,11 +20,10 @@ fileprivate extension Consts {
     static let addButtonHeight: CGFloat = UIScreen.main.bounds.width * 0.18
 }
 
-class ClolorThemeListViewController: UIViewController {
+class ClolorThemeListViewController: BaseViewController {
 
-    weak var delegate: changeColorTheme?
-
-    var chosenThemeImage: UIImage?
+    private var viewModel: ColorThemeListViewModelProtocol = ColorThemeListViewModel()
+    private lazy var router: ColorThemeListRouterProtocol = ColorThemeListRouter(viewController: self)
 
     private lazy var backButton = UIView()
 
@@ -76,18 +71,20 @@ class ClolorThemeListViewController: UIViewController {
 
     // MARK: - private funcs
     @objc private func backButtonTapped() {
-        if chosenThemeImage != nil {
+        if viewModel.chousenColorImage != nil {
             self.present(alertController, animated: true, completion: nil)
+        } else {
+            router.showCreationEditingWalletVC()
         }
     }
 
     @objc private func alertControllerYesTapped(action: UIAlertAction) {
-        guard let colorThemeImage = chosenThemeImage else { return }
-        delegate?.changeColorTheme(to: colorThemeImage)
+        viewModel.updateColorTheme()
+        router.showCreationEditingWalletVC()
     }
 
     @objc private func alertControllerNoTapped(action: UIAlertAction) {
-        // do not change wallet color theme, just exit this VC
+        router.showCreationEditingWalletVC()
     }
 
     private func setUPConstraints() {
@@ -123,10 +120,12 @@ class ClolorThemeListViewController: UIViewController {
 extension ClolorThemeListViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        chosenThemeImage = themeColorImages.filter({ $0 != nil })[indexPath.item]
+        guard let chosenThemeImage = themeColorImages.filter({ $0 != nil })[indexPath.item]
+        else { return }
+        viewModel.chousenColorImage = chosenThemeImage
 
         UIView.transition(with: backgroundGradientView, duration: 0.7, options: .transitionCrossDissolve, animations: {
-            self.backgroundGradientView.image = self.chosenThemeImage
+            self.backgroundGradientView.image = chosenThemeImage
         }, completion: nil)
     }
 }
