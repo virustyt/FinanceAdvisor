@@ -15,6 +15,9 @@ protocol ColorThemeListViewModelProtocol {
 }
 
 class ColorThemeListViewModel: ColorThemeListViewModelProtocol {
+
+    // this will be the right code after feature 4 will be merged
+    //private var manager: Manager = Manager.shared
     
     var chousenColorImage: UIImage?
 
