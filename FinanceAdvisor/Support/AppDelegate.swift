@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         let navVC = UINavigationController(rootViewController: WalletsListViewController())
-        navVC.isToolbarHidden = true
+        navVC.setNavigationBarHidden(true, animated: false)
 
         window = UIWindow.init()
         window?.rootViewController = navVC

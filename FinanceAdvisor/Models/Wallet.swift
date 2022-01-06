@@ -19,7 +19,7 @@ class Wallet {
     var colorTheme: ColorTheme = .two
 
     enum ColorTheme: CaseIterable {
-        
+
         case one, two, three, four, five
 
         var themeImage: UIImage? {

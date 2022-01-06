@@ -17,17 +17,13 @@ class WalletListViewModel: WalletListViewModelProtocol {
 
     private let manager = Manager.shared
 
-    private let router: WalletListRouterProtocol?
+    private var router: WalletListRouterProtocol?
 
     func walletsCount() -> Int {
         manager.wallets.count
     }
 
-    func getWalletBy(index: Int) -> Wallet{
+    func getWalletBy(index: Int) -> Wallet {
         manager.wallets[index]
-    }
-
-    init(router: WalletListRouterProtocol) {
-        self.router = router
     }
 }

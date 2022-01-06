@@ -19,7 +19,7 @@ class Manager {
     }
 
     func setTitle(to title: String, for walletIndex: Int) {
-        
+
     }
 
     func setCurrency(to currency: Currency, for walletIndex: Int) {
@@ -36,7 +36,7 @@ class Manager {
     func setColorTheme(to theme: Wallet.ColorTheme, for walletIndex: Int) {
 
     }
-    
+
     func addTransaction(_: Transaction, for walletIndex: Int) {
 
     }

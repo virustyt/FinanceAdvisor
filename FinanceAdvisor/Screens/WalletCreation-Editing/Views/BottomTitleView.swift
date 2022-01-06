@@ -44,8 +44,15 @@ class BottomTitleView: UIView {
         let textField = UITextField()
         textField.backgroundColor = .clear
         textField.font = R.font.montserratSemiBold(size: 24)
-        textField.textColor = .black.withAlphaComponent(0.3)
-        textField.text = LocalizeKeys.startHere.localized()
+        textField.textColor = .black
+
+        let placeholderTextAttributes: [NSAttributedString.Key: Any] = [.font: R.font.montserratSemiBold(size: 24) ??
+                                                                            UIFont.systemFont(ofSize: 24),
+                                                                        .foregroundColor: UIColor.black.withAlphaComponent(0.3)]
+        textField.attributedPlaceholder = NSAttributedString(string: LocalizeKeys.startHere.localized(),
+                                                             attributes: placeholderTextAttributes)
+        // for accordance to issue of feature 4 this textfield are not clickable
+        textField.isUserInteractionEnabled = false
         return textField
     }()
 
@@ -60,6 +67,10 @@ class BottomTitleView: UIView {
     // MARK: - public funcs
     func setWalletTitle(title: String) {
         textFieldForTitle.text = title
+    }
+
+    func setTextfieldDelegate(to textFieldDelegate: UITextFieldDelegate) {
+        textFieldForTitle.delegate = textFieldDelegate
     }
 
     // MARK: - inits

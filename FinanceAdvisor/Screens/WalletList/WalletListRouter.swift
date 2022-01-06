@@ -18,6 +18,7 @@ class WalletListRouter: BaseRouter, WalletListRouterProtocol {
 
         walletCreationEditingVC.modalPresentationStyle = .overFullScreen
         walletCreationEditingVC.modalTransitionStyle = .coverVertical
-        viewController?.present(walletCreationEditingVC, animated: true, completion: nil)
+//        viewController?.present(walletCreationEditingVC, animated: true, completion: nil)
+        viewController?.navigationController?.pushViewController(walletCreationEditingVC, animated: true)
     }
 }

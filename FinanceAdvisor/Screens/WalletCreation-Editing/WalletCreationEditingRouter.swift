@@ -24,5 +24,6 @@ class WalletCreationEditingRouter: BaseRouter, WalletCreationEditingRouterProtoc
     }
 
     func showWalletList() {
+        viewController?.navigationController?.popViewController(animated: true)
     }
 }
