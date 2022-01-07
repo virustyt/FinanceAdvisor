@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow.init()
         window?.rootViewController = WalletsListViewController()
+        // for testing issue 6 is the row below
+//        window?.rootViewController = CurrencyListViewController(forWalletWithIndex: 0)
         window?.makeKeyAndVisible()
 
         return true
