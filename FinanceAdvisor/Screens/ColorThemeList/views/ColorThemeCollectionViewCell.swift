@@ -91,4 +91,14 @@ class ColorThemeCollectionViewCell: UICollectionViewCell {
         layer.addSublayer(borderLineGradient)
         layer.addSublayer(backgroundGradientLayer)
     }
+
+    override func layoutSubviews() {
+         super.layoutSubviews()
+         if backgroundGradientLayer.frame != bounds {
+             backgroundGradientLayer.frame = bounds
+
+             borderLineGradient.frame = bounds
+             borderLineMaskLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: Consts.cornerRadius).cgPath
+         }
+     }
 }

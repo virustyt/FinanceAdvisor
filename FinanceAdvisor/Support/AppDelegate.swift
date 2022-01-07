@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow.init()
         window?.rootViewController = WalletsListViewController()
+        // for testing issue 5 is the row below
+//        window?.rootViewController = ClolorThemeListViewController()
         window?.makeKeyAndVisible()
 
         return true

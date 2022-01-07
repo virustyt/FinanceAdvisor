@@ -13,7 +13,7 @@ protocol ColorThemeListRouterProtocol {
 }
 
 class ColorThemeListRouter: BaseRouter, ColorThemeListRouterProtocol {
-    
+
     func showCreationEditingWalletVC() {
         viewController?.navigationController?.popViewController(animated: true)
     }

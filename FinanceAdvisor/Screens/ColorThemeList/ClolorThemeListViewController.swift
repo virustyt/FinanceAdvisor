@@ -13,7 +13,7 @@ fileprivate extension Consts {
     static let addWalletButtonTopInset: CGFloat = 75.75
     static let collectionViewTopInset: CGFloat = 40
 
-    static let heightToWidthCellRatio: CGFloat = 0.547
+    static let heightToWidthCellRatio: CGFloat = 0.42
     static let cellWidth: CGFloat = UIScreen.main.bounds.width - collectionViewLeadingInset - collectionViewTrailingInset
     static let cellHeight: CGFloat = cellWidth * heightToWidthCellRatio
 
@@ -25,7 +25,14 @@ class ClolorThemeListViewController: BaseViewController {
     private var viewModel: ColorThemeListViewModelProtocol = ColorThemeListViewModel()
     private lazy var router: ColorThemeListRouterProtocol = ColorThemeListRouter(viewController: self)
 
-    private lazy var backButton = UIView()
+    private lazy var backButton: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+
+        let tapGestureRecognizre = UITapGestureRecognizer(target: self, action: #selector(backButtonTapped))
+        view.addGestureRecognizer(tapGestureRecognizre)
+        return view
+    }()
 
     // this need to be a right code for backButton after #4 branch will be merged
 //    private lazy var backButton = ScreenTitleView(title: LocalizeKeys.colorThemes.localized(),
@@ -36,6 +43,8 @@ class ClolorThemeListViewController: BaseViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.register(ColorThemeCollectionViewCell.self, forCellWithReuseIdentifier: ColorThemeCollectionViewCell.identifyer)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -118,6 +127,11 @@ class ClolorThemeListViewController: BaseViewController {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ClolorThemeListViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: Consts.cellWidth,
+               height: Consts.cellHeight)
+    }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let chosenThemeImage = themeColorImages.filter({ $0 != nil })[indexPath.item]

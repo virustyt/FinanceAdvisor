@@ -17,14 +17,14 @@ protocol ColorThemeListViewModelProtocol {
 class ColorThemeListViewModel: ColorThemeListViewModelProtocol {
 
     // this will be the right code after feature 4 will be merged
-    //private var manager: Manager = Manager.shared
+    // private var manager: Manager = Manager.shared
     
     var chousenColorImage: UIImage?
 
     func updateColorTheme() {
-        //code here will be written after feature 4 will be merged - need right implimentation for Wallet class
+        // code here will be written after feature 4 will be merged - need right implimentation for Wallet class
         if chousenColorImage != nil {
-            //update wallet color theme
+            // pdate wallet color theme
         }
     }
 }

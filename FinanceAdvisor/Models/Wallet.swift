@@ -17,7 +17,7 @@ class Wallet {
     var totalSumOfMoney: Int
     var lastChangeDate: String
 
-    var transactions: [Transaction]?
+    // var transactions: [Transaction]?
 
     init(title: String,
          themeNumber: Int,
