@@ -69,8 +69,16 @@ class CurrencyListCollectionViewCell: UICollectionViewCell {
 
         currencyCodeLabel.translatesAutoresizingMaskIntoConstraints = false
         currencyNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+
+            widthAnchor.constraint(equalToConstant: CurrencyListViewController.cellWidth),
+
             currencyNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Consts.currencyNameLabelTopInset),
             currencyNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Consts.currencyNameLabelBottomInset),
             currencyNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Consts.currencyNameLabelLeadingInset),

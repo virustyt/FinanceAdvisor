@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension Consts {
+fileprivate extension Consts {
     static let backButtonTopInset: CGFloat = UIScreen.main.bounds.height / 49.77
     static let backButtonLeadingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.04))
     static let backButtonTrailingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.04))
@@ -51,7 +51,7 @@ class CurrencyListViewController: BaseViewController {
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -74,6 +74,9 @@ class CurrencyListViewController: BaseViewController {
                                                 handler: self.alertControllerNoTapped(action:)))
         return alertController
     }()
+
+    // this property needed for width constraint of CurrencyListCollectionViewCell
+    static var cellWidth: CGFloat = Consts.cellWidth
 
     // MARK: - life cycle
     override func viewDidLoad() {
