@@ -33,11 +33,13 @@ class CurrencyListCollectionViewCell: UICollectionViewCell {
     private lazy var currencyNameLabel: UILabel = {
         let label = UILabel.titleOneLabel
         label.numberOfLines = 0
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
     private lazy var currencyCodeLabel: UILabel = {
         let label = UILabel.titleOneLabel
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
 
