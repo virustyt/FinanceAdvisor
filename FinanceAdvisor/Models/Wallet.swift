@@ -19,6 +19,6 @@ class Wallet {
 
     var transactions = [Transaction]()
 
-    var colorTheme: ColorTheme = .twoself.lastChangeDate = lastChangeDate
+    var colorTheme: ColorTheme = .two
     }
 }
