@@ -10,7 +10,17 @@
 		46342C79BD21E1F50EA2B198 /* Pods_FinanceAdvisorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C99F7C3C41B5E24FFEE98E9 /* Pods_FinanceAdvisorTests.framework */; };
 		848998C22781B59300CE7FD4 /* ClolorThemeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998C12781B59300CE7FD4 /* ClolorThemeListViewController.swift */; };
 		848998C52781BCC100CE7FD4 /* ColorThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998C42781BCC100CE7FD4 /* ColorThemeCollectionViewCell.swift */; };
-		848998C72781ED5B00CE7FD4 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998C62781ED5B00CE7FD4 /* Wallet.swift */; };
+		848998BD277E3BF000CE7FD4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998BC277E3BF000CE7FD4 /* BaseViewController.swift */; };
+		848998BF277E3C4000CE7FD4 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998BE277E3C4000CE7FD4 /* BaseRouter.swift */; };
+		848998D4278333B200CE7FD4 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998D3278333B200CE7FD4 /* Currency.swift */; };
+		848998D62783342A00CE7FD4 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998D52783342A00CE7FD4 /* Wallet.swift */; };
+		848998D8278334A600CE7FD4 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998D7278334A600CE7FD4 /* WalletManager.swift */; };
+		848998DA278337A600CE7FD4 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998D9278337A600CE7FD4 /* Transaction.swift */; };
+		848998DE2783636E00CE7FD4 /* WalletListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998DD2783636E00CE7FD4 /* WalletListRouter.swift */; };
+		848998E02783648300CE7FD4 /* WalletListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998DF2783648300CE7FD4 /* WalletListViewModel.swift */; };
+		848998E2278389CD00CE7FD4 /* WalletCreationEditingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998E1278389CD00CE7FD4 /* WalletCreationEditingViewModel.swift */; };
+		848998E427838A9200CE7FD4 /* WalletCreationEditingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848998E327838A9200CE7FD4 /* WalletCreationEditingRouter.swift */; };
+		84A54674278C5CB900AD99FF /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A54673278C5CB900AD99FF /* ColorTheme.swift */; };
 		84B975AD2776063D00158382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B975AC2776063D00158382 /* AppDelegate.swift */; };
 		84B975B72776063D00158382 /* FinanceAdvisor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84B975B52776063D00158382 /* FinanceAdvisor.xcdatamodeld */; };
 		84B975B92776063E00158382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B975B82776063E00158382 /* Assets.xcassets */; };
@@ -25,14 +35,16 @@
 		84D6701F277B71AB0039F1AC /* UILabel+titleTwoRegularLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6701E277B71AB0039F1AC /* UILabel+titleTwoRegularLabel.swift */; };
 		84D67026277C65870039F1AC /* LocalizeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D67025277C65870039F1AC /* LocalizeKeys.swift */; };
 		84D6702C277C9A120039F1AC /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6702B277C9A120039F1AC /* Consts.swift */; };
+		84D67030277CEA1A0039F1AC /* WalletCreation-EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D6702F277CEA1A0039F1AC /* WalletCreation-EditingViewController.swift */; };
+		84D67032277CEA860039F1AC /* ScreenTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D67031277CEA860039F1AC /* ScreenTitleView.swift */; };
+		84D67034277CEAA10039F1AC /* ColorThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D67033277CEAA10039F1AC /* ColorThemeView.swift */; };
+		84D67036277CEAB70039F1AC /* CurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D67035277CEAB70039F1AC /* CurrencyView.swift */; };
+		84D67038277CEACC0039F1AC /* BottomTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D67037277CEACC0039F1AC /* BottomTitleView.swift */; };
 		84E9D8912779C5ED00747D88 /* WalletsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8902779C5ED00747D88 /* WalletsListViewController.swift */; };
-		84E9D8972779CA8B00747D88 /* AddWalletButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8962779CA8B00747D88 /* AddWalletButton.swift */; };
 		84E9D89A2779D28E00747D88 /* UILabel+TitleOneLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8992779D28E00747D88 /* UILabel+TitleOneLabel.swift */; };
 		84E9D89F2779D56900747D88 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84E9D89E2779D56900747D88 /* Montserrat-Regular.ttf */; };
 		84E9D8A32779DB0900747D88 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8A22779DB0900747D88 /* R.generated.swift */; };
 		84E9D8A52779E7AA00747D88 /* UIColor+RickBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8A42779E7AA00747D88 /* UIColor+RickBlack.swift */; };
-		84E9D8AA2779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8A92779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift */; };
-		84E9D8AC2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9D8AB2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift */; };
 		84E9D8AF277A1C6800747D88 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84E9D8AE277A1C6800747D88 /* Montserrat-SemiBold.ttf */; };
 		CC7C97E5EFC685CAC4FB2E21 /* Pods_FinanceAdvisor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2814473266DD18D8D54BAE50 /* Pods_FinanceAdvisor.framework */; };
 		F3FD151ED5E68526AD64C480 /* Pods_FinanceAdvisor_FinanceAdvisorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27EACCB49F0DDF20FB1B5491 /* Pods_FinanceAdvisor_FinanceAdvisorUITests.framework */; };
@@ -61,7 +73,17 @@
 		762346913C38369E4F510F62 /* Pods-FinanceAdvisorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAdvisorTests.release.xcconfig"; path = "Target Support Files/Pods-FinanceAdvisorTests/Pods-FinanceAdvisorTests.release.xcconfig"; sourceTree = "<group>"; };
 		848998C12781B59300CE7FD4 /* ClolorThemeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClolorThemeListViewController.swift; sourceTree = "<group>"; };
 		848998C42781BCC100CE7FD4 /* ColorThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeCollectionViewCell.swift; sourceTree = "<group>"; };
-		848998C62781ED5B00CE7FD4 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		848998BC277E3BF000CE7FD4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		848998BE277E3C4000CE7FD4 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
+		848998D3278333B200CE7FD4 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		848998D52783342A00CE7FD4 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		848998D7278334A600CE7FD4 /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
+		848998D9278337A600CE7FD4 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		848998DD2783636E00CE7FD4 /* WalletListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListRouter.swift; sourceTree = "<group>"; };
+		848998DF2783648300CE7FD4 /* WalletListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListViewModel.swift; sourceTree = "<group>"; };
+		848998E1278389CD00CE7FD4 /* WalletCreationEditingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreationEditingViewModel.swift; sourceTree = "<group>"; };
+		848998E327838A9200CE7FD4 /* WalletCreationEditingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreationEditingRouter.swift; sourceTree = "<group>"; };
+		84A54673278C5CB900AD99FF /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		84B975A92776063D00158382 /* FinanceAdvisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinanceAdvisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B975AC2776063D00158382 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B975B62776063D00158382 /* FinanceAdvisor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinanceAdvisor.xcdatamodel; sourceTree = "<group>"; };
@@ -84,14 +106,16 @@
 		84D6701E277B71AB0039F1AC /* UILabel+titleTwoRegularLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+titleTwoRegularLabel.swift"; sourceTree = "<group>"; };
 		84D67025277C65870039F1AC /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
 		84D6702B277C9A120039F1AC /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
+		84D6702F277CEA1A0039F1AC /* WalletCreation-EditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletCreation-EditingViewController.swift"; sourceTree = "<group>"; };
+		84D67031277CEA860039F1AC /* ScreenTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTitleView.swift; sourceTree = "<group>"; };
+		84D67033277CEAA10039F1AC /* ColorThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeView.swift; sourceTree = "<group>"; };
+		84D67035277CEAB70039F1AC /* CurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyView.swift; sourceTree = "<group>"; };
+		84D67037277CEACC0039F1AC /* BottomTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTitleView.swift; sourceTree = "<group>"; };
 		84E9D8902779C5ED00747D88 /* WalletsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsListViewController.swift; sourceTree = "<group>"; };
-		84E9D8962779CA8B00747D88 /* AddWalletButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWalletButton.swift; sourceTree = "<group>"; };
 		84E9D8992779D28E00747D88 /* UILabel+TitleOneLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+TitleOneLabel.swift"; sourceTree = "<group>"; };
 		84E9D89E2779D56900747D88 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		84E9D8A22779DB0900747D88 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		84E9D8A42779E7AA00747D88 /* UIColor+RickBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RickBlack.swift"; sourceTree = "<group>"; };
-		84E9D8A92779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletsListVC+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
-		84E9D8AB2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletsListVC+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
 		84E9D8AE277A1C6800747D88 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		95DFE53CBA933F53093198C6 /* Pods-FinanceAdvisor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAdvisor.release.xcconfig"; path = "Target Support Files/Pods-FinanceAdvisor/Pods-FinanceAdvisor.release.xcconfig"; sourceTree = "<group>"; };
 		9C99F7C3C41B5E24FFEE98E9 /* Pods_FinanceAdvisorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinanceAdvisorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +181,18 @@
 				848998C42781BCC100CE7FD4 /* ColorThemeCollectionViewCell.swift */,
 			);
 			path = views;
+      sourceTree = "<group>";
+    };
+		848998D22783339800CE7FD4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				848998D3278333B200CE7FD4 /* Currency.swift */,
+				848998D9278337A600CE7FD4 /* Transaction.swift */,
+				84A54673278C5CB900AD99FF /* ColorTheme.swift */,
+				848998D52783342A00CE7FD4 /* Wallet.swift */,
+				848998D7278334A600CE7FD4 /* WalletManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		84B975A02776063D00158382 = {
@@ -184,6 +220,7 @@
 		84B975AB2776063D00158382 /* FinanceAdvisor */ = {
 			isa = PBXGroup;
 			children = (
+				848998D22783339800CE7FD4 /* Models */,
 				84D6702A277C9A020039F1AC /* Utilites */,
 				84E9D89B2779D4BB00747D88 /* Resources */,
 				84E9D8982779D1FC00747D88 /* Extensions */,
@@ -238,8 +275,32 @@
 				84D6702B277C9A120039F1AC /* Consts.swift */,
 				84BBF6B8278783EB000BDBC7 /* BaseRouter.swift */,
 				84BBF6BA27878408000BDBC7 /* BaseViewController.swift */,
+				848998BC277E3BF000CE7FD4 /* BaseViewController.swift */,
+				848998BE277E3C4000CE7FD4 /* BaseRouter.swift */,
+
 			);
 			path = Utilites;
+			sourceTree = "<group>";
+		};
+		84D6702D277CE9B50039F1AC /* WalletCreation-Editing */ = {
+			isa = PBXGroup;
+			children = (
+				84D6702E277CE9EC0039F1AC /* Views */,
+				84D6702F277CEA1A0039F1AC /* WalletCreation-EditingViewController.swift */,
+				848998E1278389CD00CE7FD4 /* WalletCreationEditingViewModel.swift */,
+				848998E327838A9200CE7FD4 /* WalletCreationEditingRouter.swift */,
+			);
+			path = "WalletCreation-Editing";
+			sourceTree = "<group>";
+		};
+		84D6702E277CE9EC0039F1AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84D67033277CEAA10039F1AC /* ColorThemeView.swift */,
+				84D67035277CEAB70039F1AC /* CurrencyView.swift */,
+				84D67037277CEACC0039F1AC /* BottomTitleView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		84E9D88D2779C58500747D88 /* Models */ = {
@@ -262,6 +323,7 @@
 			children = (
 				84E9D8922779CA4000747D88 /* WalletList */,
 				848998C02781B53100CE7FD4 /* ColorThemeList */,
+				84D6702D277CE9B50039F1AC /* WalletCreation-Editing */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -269,9 +331,10 @@
 		84E9D8922779CA4000747D88 /* WalletList */ = {
 			isa = PBXGroup;
 			children = (
-				84E9D8AD2779F78100747D88 /* Extensions */,
 				84E9D8932779CA5000747D88 /* Views */,
 				84E9D8902779C5ED00747D88 /* WalletsListViewController.swift */,
+				848998DD2783636E00CE7FD4 /* WalletListRouter.swift */,
+				848998DF2783648300CE7FD4 /* WalletListViewModel.swift */,
 			);
 			path = WalletList;
 			sourceTree = "<group>";
@@ -279,7 +342,7 @@
 		84E9D8932779CA5000747D88 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				84E9D8962779CA8B00747D88 /* AddWalletButton.swift */,
+				84D67031277CEA860039F1AC /* ScreenTitleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,15 +381,6 @@
 				84E9D8A22779DB0900747D88 /* R.generated.swift */,
 			);
 			path = R.Swift;
-			sourceTree = "<group>";
-		};
-		84E9D8AD2779F78100747D88 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				84E9D8A92779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift */,
-				84E9D8AB2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		902EAF0E235A5F370612EF0D /* Pods */ = {
@@ -631,26 +685,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848998C72781ED5B00CE7FD4 /* Wallet.swift in Sources */,
+				848998D4278333B200CE7FD4 /* Currency.swift in Sources */,
+				84D67034277CEAA10039F1AC /* ColorThemeView.swift in Sources */,
+				84D67036277CEAB70039F1AC /* CurrencyView.swift in Sources */,
 				84E9D8A52779E7AA00747D88 /* UIColor+RickBlack.swift in Sources */,
 				848998C22781B59300CE7FD4 /* ClolorThemeListViewController.swift in Sources */,
 				84B975AD2776063D00158382 /* AppDelegate.swift in Sources */,
+				84A54674278C5CB900AD99FF /* ColorTheme.swift in Sources */,
+				848998E02783648300CE7FD4 /* WalletListViewModel.swift in Sources */,
+				848998DE2783636E00CE7FD4 /* WalletListRouter.swift in Sources */,
 				84E9D8A32779DB0900747D88 /* R.generated.swift in Sources */,
 				84BBF6BB27878408000BDBC7 /* BaseViewController.swift in Sources */,
 				84E9D8AA2779F73200747D88 /* WalletsListVC+UICollectionViewDataSource.swift in Sources */,
 				84BBF6B9278783EB000BDBC7 /* BaseRouter.swift in Sources */,
+				848998D62783342A00CE7FD4 /* Wallet.swift in Sources */,
 				84D6701F277B71AB0039F1AC /* UILabel+titleTwoRegularLabel.swift in Sources */,
 				84D67026277C65870039F1AC /* LocalizeKeys.swift in Sources */,
+				84D67038277CEACC0039F1AC /* BottomTitleView.swift in Sources */,
+				848998E427838A9200CE7FD4 /* WalletCreationEditingRouter.swift in Sources */,
 				84E9D89A2779D28E00747D88 /* UILabel+TitleOneLabel.swift in Sources */,
 				84BBF6B52787829D000BDBC7 /* ColorThemeListViewModel.swift in Sources */,
 				84D6701D277B71950039F1AC /* UILabel+titleTwoBoldLabel.swift in Sources */,
 				84E9D8972779CA8B00747D88 /* AddWalletButton.swift in Sources */,
 				84BBF6B7278782E8000BDBC7 /* ColorThemeListRouter.swift in Sources */,
 				84E9D8AC2779F76D00747D88 /* WalletsListVC+UICollectionViewDelegateFlowLayout.swift in Sources */,
+				848998BF277E3C4000CE7FD4 /* BaseRouter.swift in Sources */,
+				848998E2278389CD00CE7FD4 /* WalletCreationEditingViewModel.swift in Sources */,
+				84D6701D277B71950039F1AC /* UILabel+titleTwoBoldLabel.swift in Sources */,
 				84E9D8912779C5ED00747D88 /* WalletsListViewController.swift in Sources */,
+				848998DA278337A600CE7FD4 /* Transaction.swift in Sources */,
 				84B975B72776063D00158382 /* FinanceAdvisor.xcdatamodeld in Sources */,
 				848998C52781BCC100CE7FD4 /* ColorThemeCollectionViewCell.swift in Sources */,
 				84D6702C277C9A120039F1AC /* Consts.swift in Sources */,
+				848998BD277E3BF000CE7FD4 /* BaseViewController.swift in Sources */,
+				84D67030277CEA1A0039F1AC /* WalletCreation-EditingViewController.swift in Sources */,
+				84D67032277CEA860039F1AC /* ScreenTitleView.swift in Sources */,
+				848998D8278334A600CE7FD4 /* WalletManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

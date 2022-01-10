@@ -2,10 +2,10 @@
 //  Wallet.swift
 //  FinanceAdvisor
 //
-//  Created by Vladimir Oleinikov on 02.01.2022.
+//  Created by Vladimir Oleinikov on 03.01.2022.
 //
 
-import Foundation
+import UIKit
 
 class Wallet {
 
