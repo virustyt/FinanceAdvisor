@@ -20,5 +20,4 @@ class Wallet {
     var transactions = [Transaction]()
 
     var colorTheme: ColorTheme = .two
-    }
 }
