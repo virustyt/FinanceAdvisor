@@ -9,29 +9,16 @@ import Foundation
 
 class Wallet {
 
-    var walletTitle: String
-    var colorThemeNumber: Int
+    let identifier: UUID = UUID()
 
-    var currencyTitle: String
-    var currencySign: String
-    var totalSumOfMoney: Int
-    var lastChangeDate: String
+    var currency: Currency = Currency(name: "USD", code: "$")
 
-    // var transactions: [Transaction]?
+    var title: String = "no title"
+    var balance: Double = 0
+    var lastChangeDate: String = "no changes"
 
-    init(title: String,
-         themeNumber: Int,
-         currencyTitle: String,
-         currencySign: String,
-         totalSumOfMoney: Int,
-         lastChangeDate: String) {
+    var transactions = [Transaction]()
 
-        self.walletTitle = title
-        self.colorThemeNumber = themeNumber
-
-        self.currencyTitle = currencyTitle
-        self.currencySign = currencySign
-        self.totalSumOfMoney = totalSumOfMoney
-        self.lastChangeDate = lastChangeDate
+    var colorTheme: ColorTheme = .twoself.lastChangeDate = lastChangeDate
     }
 }

@@ -5,9 +5,17 @@
   Created by Vladimir Oleinikov on 28.12.2021.
   
 */
+
+// WalletListVC
 "no wallets created" = "Кошельки не созданы😥";
 "wallets" = "Кошельки";
 "Last change" = "последнее изменение";
+// CreationEditingVC
+"Add new wallet"  = "Добавить кошелек";
+"Edit wallet" = "Редактировать кошелек";
+"Color theme" = "Цветовая тема";
+"Start here..." = "Начни здесь...";
+// ColorThemeVC
 "Color themes" = "Цветовые темы";
 "Save changes?" = "Сохранить изменения?";
 "Yes" = "Да";
