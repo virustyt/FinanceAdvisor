@@ -16,8 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        let navVC = UINavigationController(rootViewController: WalletsListViewController())
+        navVC.setNavigationBarHidden(true, animated: false)
+
         window = UIWindow.init()
-        window?.rootViewController = WalletsListViewController()
+        window?.rootViewController = navVC
         window?.makeKeyAndVisible()
 
         return true

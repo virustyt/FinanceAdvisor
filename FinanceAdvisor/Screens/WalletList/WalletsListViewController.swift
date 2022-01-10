@@ -8,23 +8,27 @@
 import UIKit
 import Localize_Swift
 
-class WalletsListViewController: UIViewController {
+fileprivate extension Consts {
+    static let collectionViewLeadingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.05))
+    static let collectionViewTrailingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.05))
+    static let addWalletButtonTopInset: CGFloat = UIScreen.main.bounds.height / 29.86
+    static let collectionViewTopInset: CGFloat = UIScreen.main.bounds.width / 21
 
-    enum Constants {
-        static let collectionViewLeadingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.05))
-        static let collectionViewTrailingInset: CGFloat = (CGFloat) ((Int) (UIScreen.main.bounds.width * 0.05))
-        static let addWalletButtonTopInset: CGFloat = 75.75
-        static let collectionViewTopInset: CGFloat = 40
+    static let cellMinWidth: CGFloat = 208
+    static let cellWidth: CGFloat = UIScreen.main.bounds.width - collectionViewLeadingInset - collectionViewTrailingInset
 
-        static let cellMinWidth: CGFloat = 208
-        static let cellWidth: CGFloat = UIScreen.main.bounds.width - collectionViewLeadingInset - collectionViewTrailingInset
+    static let heightToWidthCellRatio: CGFloat = 0.547
+    static let cellHeight: CGFloat = cellWidth * heightToWidthCellRatio < cellMinWidth ?
+        cellMinWidth : cellWidth * heightToWidthCellRatio
 
-        static let heightToWidthCellRatio: CGFloat = 0.547
-        static let cellHeight: CGFloat = cellWidth * heightToWidthCellRatio < cellMinWidth ?
-            cellMinWidth : cellWidth * heightToWidthCellRatio
+    static let addButtonHeight: CGFloat = UIScreen.main.bounds.width * 0.18
+}
 
-        static let addButtonHeight: CGFloat = UIScreen.main.bounds.width * 0.18
-    }
+class WalletsListViewController: BaseViewController {
+
+    private lazy var viewModel: WalletListViewModelProtocol = WalletListViewModel()
+    private lazy var router: WalletListRouterProtocol = WalletListRouter(viewController: self)
+    private var selectedWalletsIdentifier: UUID?
 
     private lazy var emptyCollectionViewLabel: UILabel = {
         let label = UILabel.titleOneLabel
@@ -33,10 +37,9 @@ class WalletsListViewController: UIViewController {
         return label
     }()
 
-    private lazy var addWalletButton: UIView = {
-        let button = AddWalletButton()
-        return button
-    }()
+    private lazy var addWalletButton = ScreenTitleView(title: LocalizeKeys.wallets.localized(),
+                                     leftButtonImage: R.image.add(),
+                                     leftButtonTapClouser: addButtonTapped)
 
     private let backgroundGradientView = UIImageView(image: R.image.backGradientTwo())
 
@@ -81,19 +84,54 @@ class WalletsListViewController: UIViewController {
             backgroundGradientView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundGradientView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            addWalletButton.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.addWalletButtonTopInset),
-            addWalletButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.collectionViewLeadingInset),
-            addWalletButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.collectionViewTrailingInset),
-            addWalletButton.heightAnchor.constraint(equalToConstant: Constants.addButtonHeight),
+            addWalletButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Consts.addWalletButtonTopInset),
+            addWalletButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Consts.collectionViewLeadingInset),
+            addWalletButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Consts.collectionViewTrailingInset),
+            addWalletButton.heightAnchor.constraint(equalToConstant: Consts.addButtonHeight),
 
             collectionView.topAnchor.constraint(equalTo: addWalletButton.bottomAnchor,
-                                               constant: Constants.collectionViewTopInset),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.collectionViewLeadingInset),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.collectionViewTrailingInset),
+                                               constant: Consts.collectionViewTopInset),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Consts.collectionViewLeadingInset),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Consts.collectionViewTrailingInset),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
             emptyCollectionViewLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             emptyCollectionViewLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+    }
+
+    @objc private func addButtonTapped() {
+        viewModel.addEmptyWallet()
+
+        guard let lastAddedWalletsIdentifier = viewModel.newWalletsIdentifier
+        else { return }
+        router.showWalletCreationEditingVC(forWalletWithIdentifier: lastAddedWalletsIdentifier)
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension WalletsListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let selectedWallet = viewModel.getWalletBy(collectionViewItem: indexPath.item)
+        router.showWalletCreationEditingVC(forWalletWithIdentifier: selectedWallet.identifier)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: Consts.cellWidth,
+                      height: Consts.cellHeight)
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension WalletsListViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        viewModel.walletsCount()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
     }
 }
