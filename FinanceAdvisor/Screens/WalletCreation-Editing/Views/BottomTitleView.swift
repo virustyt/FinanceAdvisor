@@ -30,7 +30,7 @@ class BottomTitleView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel.titleOneLabel
-        label.text = LocalizeKeys.colorTheme.localized()
+        label.text = LocalizeKeys.title.localized()
         return label
     }()
 

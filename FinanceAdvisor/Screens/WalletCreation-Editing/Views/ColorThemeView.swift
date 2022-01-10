@@ -41,7 +41,12 @@ class ColorThemeView: UIView {
 
     private let rightArrowImageView = UIImageView(image: R.image.arrowRight())
 
-    private let containerView = UIView()
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(containerViewTapped))
+        view.addGestureRecognizer(tapGestureRecognizer)
+        return view
+    }()
 
     private lazy var themeColorView: UIImageView = {
         let imageView = UIImageView(image: R.image.backGradientFive())

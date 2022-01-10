@@ -6,9 +6,22 @@
   
 */
 
+// WalletListVC
 "no wallets created" = "钱包尚未创建😥";
 "wallets" = "钱包";
 "Last change" = "最后更改";
+// CreationEditingVC
+"Add new wallet" = "Add new wallet";
+"Edit wallet" = "Edit wallet";
+"Color theme" = "Color theme";
+"Start here..." = "Start here...";
+"Currencies" = "货币";
+"Title" = "标题";
+// ColorThemeListVC
+"Color themes" = "颜色主题";
+"Save changes?" = "保存更改?";
+"Yes" = "是的";
+"No"  = "不";
 "Add new wallet" = "添加新钱包";
 "Edit wallet" = "编辑钱包";
 "Color theme" = "颜色主题";

@@ -9,11 +9,9 @@ import UIKit
 
 protocol WalletListViewModelProtocol {
 
-    var newWalletsIdentifier: UUID? { get }
-
     func addEmptyWallet()
 
-    func getWalletBy(collectionViewItem item: Int) -> Wallet
+    func setEditingWallet(toWalletWithIndex item: Int)
 
     func walletsCount() -> Int
 }
@@ -22,18 +20,15 @@ class WalletListViewModel: WalletListViewModelProtocol {
 
     private let manager: WalletManagerProtocol = WalletManager.shared
 
-    var newWalletsIdentifier: UUID?
-
     func addEmptyWallet() {
-        let newWalletIdentifier = manager.addEmptyWallet()
-        self.newWalletsIdentifier = newWalletIdentifier
+        manager.addEmptyWallet()
     }
 
     func walletsCount() -> Int {
         manager.wallets.count
     }
 
-    func getWalletBy(collectionViewItem item: Int) -> Wallet {
-        manager.wallets[item]
+    func setEditingWallet(toWalletWithIndex index: Int) {
+        manager.setEditingWallet(toWalletWithIndex: index)
     }
 }

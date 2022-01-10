@@ -34,7 +34,7 @@ class CurrencyView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel.titleOneLabel
-        label.text = LocalizeKeys.colorTheme.localized()
+        label.text = LocalizeKeys.currencies.localized()
         return label
     }()
 

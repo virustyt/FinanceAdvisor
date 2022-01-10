@@ -19,6 +19,7 @@ protocol WalletCreationEditingRouterProtocol {
 class WalletCreationEditingRouter: BaseRouter, WalletCreationEditingRouterProtocol {
 
     func showChoosingColorThemeVC() {
+        viewController?.navigationController?.pushViewController(ColorThemeListViewController(), animated: true)
     }
 
     func showChoosingCurrencyVC() {

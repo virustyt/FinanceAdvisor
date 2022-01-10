@@ -6,10 +6,19 @@
   
 */
 
+// WalletListVC
 "no wallets created" = "No wallets created 😥";
 "wallets" = "Wallets";
 "Last change" = "Last change";
+// CreationEditingVC
 "Add new wallet" = "Add new wallet";
 "Edit wallet" = "Edit wallet";
 "Color theme" = "Color theme";
 "Start here..." = "Start here...";
+"Currencies" = "Currencies";
+"Title" = "Title";
+// ColorThemeWalletVC
+"Color themes" = "Color themes";
+"Save changes?" = "Save changes?";
+"Yes" = "Yes";
+"No" = "No";
