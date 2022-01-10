@@ -8,17 +8,16 @@
 import UIKit
 
 protocol WalletListRouterProtocol {
-    func showWalletCreationEditingVC()
+    func showWalletCreationEditingVC(forWalletWithIdentifier identifier: UUID)
 }
 
 class WalletListRouter: BaseRouter, WalletListRouterProtocol {
 
-    func showWalletCreationEditingVC() {
-        let walletCreationEditingVC = WalletCreationEditingViewController()
+    func showWalletCreationEditingVC(forWalletWithIdentifier identifier: UUID) {
+        let walletCreationEditingVC = WalletCreationEditingViewController(chousenWalletIdentifier: identifier)
 
         walletCreationEditingVC.modalPresentationStyle = .overFullScreen
         walletCreationEditingVC.modalTransitionStyle = .coverVertical
-//        viewController?.present(walletCreationEditingVC, animated: true, completion: nil)
         viewController?.navigationController?.pushViewController(walletCreationEditingVC, animated: true)
     }
 }

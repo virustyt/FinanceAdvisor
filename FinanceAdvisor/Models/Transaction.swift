@@ -8,6 +8,8 @@
 import Foundation
 
 struct Transaction {
+    let identifier: UUID = UUID()
+
     var title: String = "no title"
     var sum: Double = 0
     var direction: Direction = .income

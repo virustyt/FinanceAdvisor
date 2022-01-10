@@ -33,10 +33,11 @@ fileprivate extension Consts {
 
 class WalletCreationEditingViewController: BaseViewController {
 
-    private lazy var viewModel: WalletCreatingEditingWalletProtocol = WalletCreationEditingViewModel(forWalletWithIndex: chousenWalletIndex)
+    private lazy var viewModel: WalletCreatingEditingWalletProtocol =
+        WalletCreationEditingViewModel(walletIdentifier: chousenWalletIdentifier)
     private lazy var router: WalletCreationEditingRouterProtocol = WalletCreationEditingRouter(viewController: self)
 
-    var chousenWalletIndex: Int
+    var chousenWalletIdentifier: UUID
 
     private lazy var backEditWalletView = ScreenTitleView(title: LocalizeKeys.addNewWallet.localized(),
                                             rightButtonImage: R.image.back(),
@@ -62,15 +63,15 @@ class WalletCreationEditingViewController: BaseViewController {
     }
 
     // MARK: - inits
-    init(chousenWalletIndex: Int) {
-        self.chousenWalletIndex = chousenWalletIndex
+    init(chousenWalletIdentifier: UUID) {
+        self.chousenWalletIdentifier = chousenWalletIdentifier
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - private funcs
 
     //  swiftlint:disable function_body_length

@@ -8,6 +8,9 @@
 import UIKit
 
 class Wallet {
+
+    let identifier: UUID = UUID()
+
     var currency: Currency = Currency(name: "USD", code: "$")
 
     var title: String = "no title"
@@ -17,24 +20,4 @@ class Wallet {
     var transactions = [Transaction]()
 
     var colorTheme: ColorTheme = .two
-
-    enum ColorTheme: CaseIterable {
-
-        case one, two, three, four, five
-
-        var themeImage: UIImage? {
-            switch self {
-            case .one:
-                return R.image.backGradientOne()
-            case .two:
-                return R.image.backGradientTwo()
-            case .three:
-                return R.image.backGradientThree()
-            case .four:
-                return R.image.backGradientFour()
-            case .five:
-                return R.image.backGradientFive()
-            }
-        }
-    }
 }

@@ -8,22 +8,32 @@
 import UIKit
 
 protocol WalletListViewModelProtocol {
-    func getWalletBy(index: Int) -> Wallet
+
+    var newWalletsIdentifier: UUID? { get }
+
+    func addEmptyWallet()
+
+    func getWalletBy(collectionViewItem item: Int) -> Wallet
 
     func walletsCount() -> Int
 }
 
 class WalletListViewModel: WalletListViewModelProtocol {
 
-    private let manager = Manager.shared
+    private let manager: WalletManagerProtocol = WalletManager.shared
 
-    private var router: WalletListRouterProtocol?
+    var newWalletsIdentifier: UUID?
+
+    func addEmptyWallet() {
+        let newWalletIdentifier = manager.addEmptyWallet()
+        self.newWalletsIdentifier = newWalletIdentifier
+    }
 
     func walletsCount() -> Int {
         manager.wallets.count
     }
 
-    func getWalletBy(index: Int) -> Wallet {
-        manager.wallets[index]
+    func getWalletBy(collectionViewItem item: Int) -> Wallet {
+        manager.wallets[item]
     }
 }

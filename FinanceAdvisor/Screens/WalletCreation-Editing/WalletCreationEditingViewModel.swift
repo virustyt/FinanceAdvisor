@@ -9,24 +9,24 @@ import Foundation
 
 protocol WalletCreatingEditingWalletProtocol {
 
-    var walletIndex: Int {get set}
+    var walletIdentifier: UUID {get set}
 
     func updateWalletTitle(to title: String)
 
-    init(forWalletWithIndex index: Int)
+    init(walletIdentifier uuid: UUID)
 }
 
 class WalletCreationEditingViewModel: WalletCreatingEditingWalletProtocol {
 
-    private var manager: Manager = Manager.shared
+    private var manager: WalletManagerProtocol = WalletManager.shared
 
-    internal var walletIndex: Int
+    internal var walletIdentifier: UUID
 
     func updateWalletTitle(to title: String) {
-        manager.setTitle(to: title, for: walletIndex)
+        manager.setTitle(to: title, for: walletIdentifier)
     }
 
-    required init(forWalletWithIndex index: Int) {
-        walletIndex = index
+    required init(walletIdentifier uuid: UUID) {
+        walletIdentifier = uuid
     }
 }
