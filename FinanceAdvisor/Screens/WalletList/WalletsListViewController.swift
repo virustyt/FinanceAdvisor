@@ -28,7 +28,6 @@ class WalletsListViewController: BaseViewController {
 
     private lazy var viewModel: WalletListViewModelProtocol = WalletListViewModel()
     private lazy var router: WalletListRouterProtocol = WalletListRouter(viewController: self)
-    private var selectedWalletsIdentifier: UUID?
 
     private var wallets: [Wallet] = [Wallet]()
 
@@ -64,8 +63,9 @@ class WalletsListViewController: BaseViewController {
 
     // MARK: - life cycle
     override func viewWillLayoutSubviews() {
-        // if model is empty, unhide emptyCollectionViewLabel
-        emptyCollectionViewLabel.isHidden = false
+        if collectionView.accessibilityElementCount() == 0 {
+            emptyCollectionViewLabel.isHidden = false
+        }
     }
 
     // MARK: - private funcs
@@ -104,19 +104,15 @@ class WalletsListViewController: BaseViewController {
 
     @objc private func addButtonTapped() {
         viewModel.addEmptyWallet()
-
-        guard let lastAddedWalletsIdentifier = viewModel.newWalletsIdentifier
-        else { return }
-        router.showWalletCreationEditingVC(forWalletWithIdentifier: lastAddedWalletsIdentifier)
+        router.showWalletCreationEditingVC()
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension WalletsListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        let selectedWallet = viewModel.getWalletBy(collectionViewItem: indexPath.item)
-        router.showWalletCreationEditingVC(forWalletWithIdentifier: selectedWallet.identifier)
+        viewModel.setEditingWallet(toWalletWithIndex: indexPath.item)
+        router.showWalletCreationEditingVC()
     }
 
     func collectionView(_ collectionView: UICollectionView,

@@ -48,8 +48,8 @@ class ColorThemeCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - public funcs
-    func setColorImage(image: UIImage) {
-        colorImageView.image = image
+    func setColorTheme(to colorTheme: ColorTheme) {
+        colorImageView.image = colorTheme.themeImage
     }
 
     // MARK: - private funcs

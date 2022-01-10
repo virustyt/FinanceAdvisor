@@ -9,6 +9,8 @@ import Foundation
 
 protocol WalletCreatingEditingWalletProtocol {
 
+    var manager: WalletManagerProtocol { get }
+
     var walletIdentifier: UUID {get set}
 
     func updateWalletTitle(to title: String)
@@ -18,7 +20,7 @@ protocol WalletCreatingEditingWalletProtocol {
 
 class WalletCreationEditingViewModel: WalletCreatingEditingWalletProtocol {
 
-    private var manager: WalletManagerProtocol = WalletManager.shared
+    internal var manager: WalletManagerProtocol = WalletManager.shared
 
     internal var walletIdentifier: UUID
 

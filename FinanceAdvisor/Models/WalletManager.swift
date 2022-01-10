@@ -13,7 +13,11 @@ protocol WalletManagerProtocol {
 
     var wallets: [Wallet] { get }
 
-    func addEmptyWallet() -> UUID
+    var editingWalletIdentifyer: UUID? { get }
+
+    func setEditingWallet(toWalletWithIndex index: Int )
+
+    func addEmptyWallet()
 
     func setTitle(to title: String, for walletIdentifier: UUID)
 
@@ -35,11 +39,16 @@ class WalletManager: WalletManagerProtocol {
     static var shared: WalletManagerProtocol = WalletManager()
 
     var wallets = [Wallet]()
+    var editingWalletIdentifyer: UUID?
 
     // MARK: - public funcs
-    func addEmptyWallet() -> UUID {
-        // this code have to be replaced in future
-        return UUID()
+    func setEditingWallet(toWalletWithIndex index: Int) {
+        editingWalletIdentifyer = wallets[index].identifier
+    }
+
+    func addEmptyWallet() {
+        let newEmptyWallet = Wallet()
+        editingWalletIdentifyer = newEmptyWallet.identifier
     }
 
     func setTitle(to title: String, for walletIdentifier: UUID) {

@@ -20,24 +20,24 @@ fileprivate extension Consts {
     static let addButtonHeight: CGFloat = UIScreen.main.bounds.width * 0.18
 }
 
-class ClolorThemeListViewController: BaseViewController {
+class ColorThemeListViewController: BaseViewController {
 
     private var viewModel: ColorThemeListViewModelProtocol = ColorThemeListViewModel()
     private lazy var router: ColorThemeListRouterProtocol = ColorThemeListRouter(viewController: self)
 
-    private lazy var backButton: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
+//    private lazy var backButton: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .white
+//
+//        let tapGestureRecognizre = UITapGestureRecognizer(target: self, action: #selector(backButtonTapped))
+//        view.addGestureRecognizer(tapGestureRecognizre)
+//        return view
+//    }()
 
-        let tapGestureRecognizre = UITapGestureRecognizer(target: self, action: #selector(backButtonTapped))
-        view.addGestureRecognizer(tapGestureRecognizre)
-        return view
-    }()
-
-    // this need to be a right code for backButton after #4 branch will be merged
-//    private lazy var backButton = ScreenTitleView(title: LocalizeKeys.colorThemes.localized(),
-//                                         leftButtonImage: R.image.back(),
-//                                         leftButtonTapClouser: backButtonTapped)
+//     this need to be a right code for backButton after #4 branch will be merged
+    private lazy var backButton = ScreenTitleView(title: LocalizeKeys.colorThemes.localized(),
+                                         leftButtonImage: R.image.back(),
+                                         leftButtonTapClouser: backButtonTapped)
 
     private lazy var colorsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -51,11 +51,7 @@ class ClolorThemeListViewController: BaseViewController {
         return collectionView
     }()
 
-    private let themeColorImages: [UIImage?] = [R.image.backGradientOne(),
-                                               R.image.backGradientTwo(),
-                                               R.image.backGradientThree(),
-                                               R.image.backGradientFour(),
-                                               R.image.backGradientFive() ]
+    private let colorThemes: [ColorTheme] = ColorTheme.allCases
 
     private var backgroundGradientView = UIImageView(image: R.image.backGradientTwo())
 
@@ -80,7 +76,7 @@ class ClolorThemeListViewController: BaseViewController {
 
     // MARK: - private funcs
     @objc private func backButtonTapped() {
-        if viewModel.chousenColorImage != nil {
+        if viewModel.chousenColorTheme != nil {
             self.present(alertController, animated: true, completion: nil)
         } else {
             router.showCreationEditingWalletVC()
@@ -126,28 +122,29 @@ class ClolorThemeListViewController: BaseViewController {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension ClolorThemeListViewController: UICollectionViewDelegateFlowLayout {
+extension ColorThemeListViewController: UICollectionViewDelegateFlowLayout {
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: Consts.cellWidth,
                height: Consts.cellHeight)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let chosenThemeImage = themeColorImages.filter({ $0 != nil })[indexPath.item]
-        else { return }
-        viewModel.chousenColorImage = chosenThemeImage
+        let chosenColorTheme = colorThemes[indexPath.item]
+        viewModel.chousenColorTheme = chosenColorTheme
 
         UIView.transition(with: backgroundGradientView, duration: 0.7, options: .transitionCrossDissolve, animations: {
-            self.backgroundGradientView.image = chosenThemeImage
+            self.backgroundGradientView.image = chosenColorTheme.themeImage
         }, completion: nil)
     }
 }
 
 // MARK: - UICollectionViewDataSource
-extension ClolorThemeListViewController: UICollectionViewDataSource {
+extension ColorThemeListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        themeColorImages.filter { $0 != nil }.count
+        colorThemes.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -155,10 +152,7 @@ extension ClolorThemeListViewController: UICollectionViewDataSource {
                                                             for: indexPath) as? ColorThemeCollectionViewCell
         else { return UICollectionViewCell() }
 
-        guard let colorImage = themeColorImages.filter({ $0 != nil })[indexPath.item]
-        else { return cell }
-        cell.setColorImage(image: colorImage)
-
+        cell.setColorTheme(to: colorThemes[indexPath.item])
         return cell
     }
 }

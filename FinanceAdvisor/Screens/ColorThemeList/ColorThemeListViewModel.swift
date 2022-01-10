@@ -9,22 +9,23 @@ import UIKit
 
 protocol ColorThemeListViewModelProtocol {
 
-    var chousenColorImage: UIImage? {get set}
+    var manager: WalletManagerProtocol { get }
+
+    var chousenColorTheme: ColorTheme? {get set}
 
     func updateColorTheme()
 }
 
 class ColorThemeListViewModel: ColorThemeListViewModelProtocol {
 
-    // this will be the right code after feature 4 will be merged
-    // private var manager: Manager = Manager.shared
-    
-    var chousenColorImage: UIImage?
+    var manager: WalletManagerProtocol = WalletManager.shared
+
+    var chousenColorTheme: ColorTheme?
 
     func updateColorTheme() {
-        // code here will be written after feature 4 will be merged - need right implimentation for Wallet class
-        if chousenColorImage != nil {
-            // pdate wallet color theme
-        }
+        guard let colorTheme = chousenColorTheme,
+              let walletIdentifier = manager.editingWalletIdentifyer
+        else { return }
+        manager.setColorTheme(to: colorTheme, for: walletIdentifier)
     }
 }
